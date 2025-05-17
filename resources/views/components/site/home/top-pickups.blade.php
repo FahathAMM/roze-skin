@@ -1,0 +1,156 @@
+@props([
+    'products' => [],
+])
+
+@php
+    $skins = [
+        ['label' => 'Face', 'image' => 'face-cls.jpg'],
+        ['label' => 'Hand', 'image' => 'hand-cls.jpg'],
+        ['label' => 'Body', 'image' => 'body-cls.jpg'],
+        ['label' => 'Eyes', 'image' => 'eye-cls.jpg'],
+        ['label' => 'Foot', 'image' => 'foot-cls.jpg'],
+        ['label' => 'Lip', 'image' => 'lip-cls.jpg'],
+    ];
+@endphp
+
+{{-- @dd($products) --}}
+
+<div class="swiper-slide">
+    <div class="card-product wow fadeInUp" data-wow-delay="0.1s">
+        <div class="card-product-wrapper">
+
+            {{-- <a href="product-detail.html" class="product-img">
+                    <img class="lazyload img-product"
+                        data-src="images/products/beauty-cosmetic/beauty11.jpg"
+                        src="images/products/beauty-cosmetic/beauty11.jpg" alt="image-product">
+                    <img class="lazyload img-hover" data-src="images/products/beauty-cosmetic/beauty13.jpg"
+                        src="images/products/beauty-cosmetic/beauty13.jpg" alt="image-product">
+                </a> --}}
+
+            <a href="{{ url('product', ['id' => $products?->id]) }}" class="product-img">
+                <img class="lazyload img-product" data-src="{{ $products?->mainImage?->image }}"
+                    src="{{ $products?->mainImage?->image }}" alt="image-product">
+                <img class="lazyload img-hover" data-src="{{ $products?->mainImage?->image }}"
+                    src="{{ $products?->mainImage?->image }}" alt="image-product">
+            </a>
+
+
+            <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+            <div class="marquee-product bg-main">
+                <div class="marquee-wrapper">
+                    <div class="initial-child-container">
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="marquee-wrapper">
+                    <div class="initial-child-container">
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                        <div class="marquee-child-item">
+                            <p class="font-2 text-btn-uppercase fw-6 text-white">Hot Sale 25% OFF
+                            </p>
+                        </div>
+                        <div class="marquee-child-item">
+                            <span class="icon icon-lightning text-critical"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-product-btn">
+                <a href="javascript:void(0);" class="box-icon wishlist btn-icon-action">
+                    <span class="icon icon-heart"></span>
+                    <span class="tooltip">Wishlist</span>
+                </a>
+                <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                    class="box-icon compare btn-icon-action">
+                    <span class="icon icon-gitDiff"></span>
+                    <span class="tooltip">Compare</span>
+                </a>
+                <a href="#quickView" data-bs-toggle="modal" class="box-icon quickview tf-btn-loading">
+                    <span class="icon icon-eye"></span>
+                    <span class="tooltip">Quick View</span>
+                </a>
+            </div>
+            <div class="list-btn-main">
+                <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
+                    cart</a>
+            </div>
+        </div>
+        <div class="card-product-info">
+            <a href="product-detail.html" class="title link">Cleansing Balm </a>
+            <span class="price"><span class="old-price">$98.00</span> $79.99</span>
+            <ul class="list-color-product">
+                <li class="list-color-item color-swatch active line">
+                    <span class="swatch-value bg-light-pink"></span>
+                    <img class="lazyload" data-src="images/products/beauty-cosmetic/beauty11.jpg"
+                        src="images/products/beauty-cosmetic/beauty11.jpg" alt="image-product">
+                </li>
+                <li class="list-color-item color-swatch">
+                    <span class="swatch-value bg-light-blue-2"></span>
+                    <img class="lazyload" data-src="images/products/beauty-cosmetic/beauty14.jpg"
+                        src="images/products/beauty-cosmetic/beauty14.jpg" alt="image-product">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
