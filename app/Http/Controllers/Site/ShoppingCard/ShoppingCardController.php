@@ -27,18 +27,20 @@ class ShoppingCardController extends Controller
 
     public function index()
     {
-        // return loggedCustomer()->id;
-        // return customerAuth()->check();
-        // return customerAuth()->user();
-
-        return $cartItems = $this->repo->getCart();
+        $cartItems = $this->repo->getCart();
         $total = $this->repo->getCartTotal();
 
-        return view('cart.index', compact('cartItems', 'total'));
+        // resources\views\site\shoppingcard\index.blade.php
+
+        return view('site.shoppingcard.index', compact('cartItems', 'total'));
     }
 
     public function addToCart(Request $request, Product $product)
     {
+        // return [
+        //     $request->all(),
+        //     $product
+        // ];
         $this->repo->addToCart($product, $request->quantity ?? 1);
 
         return redirect()->back()->with('success', 'Product added to cart successfully!');
