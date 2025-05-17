@@ -12,12 +12,11 @@ class CartRepo extends BaseRepository
     protected $model;
     protected $loggedCustomerId;
 
-    // 'user_id' => customerAuth()->check() ? loggedCustomer()->id : null,
-
     public function __construct(Cart $model)
     {
+        // dd(loggedCustomer());
         $this->model = $model;
-        $this->loggedCustomerId = loggedCustomer()->id;
+        $this->loggedCustomerId = loggedCustomer()->id ?? false;
     }
 
     public function __call($method, $parameters)
