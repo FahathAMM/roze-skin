@@ -48,7 +48,8 @@
             "app/Helpers/Helpers.php",
             "app/Helpers/Menu.php",
             "app/Helpers/Template.php",
-            "app/Helpers/Media.php"
+            "app/Helpers/Media.php",
+            "app/Helpers/Site.php"
         ]
     },
     "autoload-dev": {
