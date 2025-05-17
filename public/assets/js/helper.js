@@ -188,6 +188,33 @@ function endSpinLoader(idName) {
     $(`#${idName} i`).removeClass('fa-spin');
 }
 
+
+function alertNotifySite(msg, status) {
+
+    let sts = status || 'success';
+
+    const arr = {
+        success: 'bg-success',
+        error: 'bg-danger',
+        warning: 'bg-info',
+    }
+    console.log(arr[sts]);
+    Toastify({
+        text: msg || '',
+        duration: 3000,
+        newWindow: true,
+        close: false,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        className: arr[sts],
+        // style: {
+        //     background: "linear-gradient(to right, #00b09b, #96c93d)",
+        // },
+        onClick: function () { } // Callback after click
+    }).showToast();
+}
+
 function alertNotify(msg, status) {
 
     let sts = status || 'success';
