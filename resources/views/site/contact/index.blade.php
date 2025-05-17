@@ -17,8 +17,8 @@
 
     <style>
         /* .wrap-map a {
-                                        display: none
-                                    } */
+                                                display: none
+                                            } */
     </style>
 
     <!-- map -->
@@ -280,7 +280,7 @@
         </script>
     @endpush
 
-    <style>
+    {{-- <style>
         .load-btn svg {
             width: 30px;
             height: 30px;
@@ -510,5 +510,5 @@
             padding: var(--vz-toast-padding-x);
             word-wrap: break-word
         }
-    </style>
+    </style> --}}
 @endsection

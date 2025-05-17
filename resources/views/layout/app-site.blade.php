@@ -31,7 +31,6 @@
         @include('include.site.header')
         {{-- @include('include.site.header-xtreme') --}}
 
-        <x-site.component.shopping-card />
 
 
         @yield('content')

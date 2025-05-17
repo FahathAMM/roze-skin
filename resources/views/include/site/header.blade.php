@@ -6,7 +6,6 @@
         ['name' => 'Contact', 'url' => url('contact'), 'pattern' => 'contact'],
         ['name' => 'About', 'url' => url('aboutus'), 'pattern' => 'aboutus'],
     ];
-
     // getSolutionForHeader();
 
     $headerColor = getSetting('header_color');
@@ -763,7 +762,9 @@
             </div>
             <div class="col-xl-3 col-md-4 col-3">
                 <ul class="nav-icon d-flex justify-content-end align-items-center">
-                    <li class="nav-search"><a href="#search" data-bs-toggle="modal" class="nav-icon-item">
+
+                    <li class="nav-search">
+                        <a href="#search" data-bs-toggle="modal" class="nav-icon-item">
                             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -772,7 +773,9 @@
                                 <path d="M21.35 21.0004L17 16.6504" stroke="#181818" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </a></li>
+                        </a>
+                    </li>
+
                     <li class="nav-account">
                         <a href="#" class="nav-icon-item">
                             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -785,18 +788,33 @@
                                     stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </a>
-                        <div class="dropdown-account dropdown-login">
-                            <div class="sub-top">
-                                <a href="login.html" class="tf-btn btn-reset">Login</a>
-                                <p class="text-center text-secondary-2">Don’t have an account? <a
-                                        href="register.html">Register</a></p>
+
+                        @if (Auth::guard('customer')->check())
+                            <div class="dropdown-account">
+                                <ul class="list-menu-item">
+                                    <li><a href="my-account.html" class="body-text-1 link">My Account</a></li>
+                                    <li><a href="order-tracking.html" class="body-text-1 link">Order Tracking</a>
+                                    </li>
+                                    <li><a href="my-account-orders.html" class="body-text-1 link">My Order</a></li>
+                                    <li><a href="my-account-address.html" class="body-text-1 link">My Address</a>
+                                    </li>
+                                    <li><a href="{{ route('customer.logout') }}" class="body-text-1 link">Logout</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="sub-bot">
-                                <span class="body-text-">Support</span>
+                        @else
+                            <div class="dropdown-account dropdown-login">
+                                <div class="sub-top">
+                                    <a href="{{ route('customer.login') }}" class="tf-btn btn-reset">Login</a>
+                                    <p class="text-center text-secondary-2">Don’t have an account? <a
+                                            href="{{ route('customer.register') }}">Register</a></p>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </li>
-                    <li class="nav-wishlist"><a href="wish-list.html" class="nav-icon-item">
+
+                    <li class="nav-wishlist">
+                        <a href="wish-list.html" class="nav-icon-item">
                             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -805,7 +823,9 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="nav-cart"><a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item">
+
+                    <li class="nav-cart">
+                        <a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item">
                             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -815,6 +835,7 @@
                             </svg>
                             <span class="count-box">1</span></a>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -825,20 +846,21 @@
     <x-site.header.banner />
 @endif
 
+<!-- search -->
+<x-site.component.search />
+<!-- /search -->
+
+<!-- shoppingCart -->
+{{-- <x-site.component.shopping-card /> --}}
+<!-- shoppingCart -->
 
 <!-- mobile menu -->
-
-
 <x-site.header.mobile-sidebar />
 <!-- /mobile menu -->
-
 
 @push('scripts')
     <script>
         // $('document').ready(function() {
-
-
-
         // });
 
         function viewChild(param) {

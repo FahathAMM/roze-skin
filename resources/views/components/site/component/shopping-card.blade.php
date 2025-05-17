@@ -1,4 +1,9 @@
    <!-- shoppingCart -->
+
+   @php
+       //    dd(getProductsForCardModel());
+   @endphp
+
    <div class="modal fullRight fade modal-shopping-cart" id="shoppingCart">
        <div class="modal-dialog">
            <div class="modal-content">
@@ -21,7 +26,7 @@
                                    </div>
                                </div>
                            </div>
-                           <div class="list-cart-item">
+                           {{-- <div class="list-cart-item">
                                <div class="image">
                                    <img class="lazyload" data-src="images/products/womens/women-2.jpg"
                                        src="images/products/womens/women-2.jpg" alt="">
@@ -97,7 +102,7 @@
                                        <a class="link text-button" href="#">Add to cart</a>
                                    </div>
                                </div>
-                           </div>
+                           </div> --}}
                        </div>
                    </div>
                </div>

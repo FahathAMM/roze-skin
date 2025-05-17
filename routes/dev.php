@@ -16,6 +16,7 @@ use App\Models\Shipment\OrderTracking;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Shipment\ShipmentDetail;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Database\Schema\Blueprint;
 use Symfony\Component\Console\Output\BufferedOutput;
 use App\Http\Controllers\Pages\Application\MailController;
 
@@ -31,10 +32,19 @@ use App\Http\Controllers\Pages\Application\MailController;
 */
 
 Route::get('/dev1', function () {
-    Schema::dropIfExists('customers');
-    Schema::dropIfExists('wishlists');
-    Schema::dropIfExists('order_items');
-    Schema::dropIfExists('orders');
+    Schema::create('carts', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('customer_id')->nullable();
+        $table->unsignedBigInteger('product_id');
+        $table->unsignedBigInteger('product_variant_id')->nullable();
+        $table->integer('quantity')->default(1);
+        $table->decimal('price', 10, 2)->nullable();
+        $table->string('session_id')->nullable();
+        $table->timestamps();
+
+        $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+    });
 });
 
 // function addDays($date, $days)

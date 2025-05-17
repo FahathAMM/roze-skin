@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" href="{{ asset('site/css/drift-basic.min.css') }}">
 <link rel="stylesheet" href="{{ asset('site/css/photoswipe.css') }}">
+<link rel="stylesheet" href="{{ asset('site/css/customer.css') }}">
 
 
 
