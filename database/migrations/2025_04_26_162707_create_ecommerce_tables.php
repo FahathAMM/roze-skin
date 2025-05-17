@@ -46,6 +46,21 @@ class CreateEcommerceTables extends Migration
             $table->timestamps();
         });
 
+        // carts table
+        Schema::create('carts', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('product_variant_id')->nullable();
+            $table->integer('quantity')->default(1);
+            $table->decimal('price', 10, 2)->nullable();
+            $table->string('session_id')->nullable();
+            $table->timestamps();
+
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+        });
+
         // Wishlists table
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
