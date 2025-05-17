@@ -2,51 +2,66 @@
 
 namespace App\Http\Controllers\Site\ShoppingCard;
 
-use App\Http\Controllers\Controller;
+use App\Models\Order\Cart;
 use Illuminate\Http\Request;
+use App\Models\Product\Product;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\Orders\CartRepo;
 
 class ShoppingCardController extends Controller
 {
+    protected $modelName = 'Cart';
+    protected $routeName = 'cart.index';
+    protected $isDestroyingAllowed;
+    protected $model;
 
-    public function index(Request $request)
+    protected $repo;
+
+    public function __construct(Cart $model, CartRepo $repo)
     {
-        $products = Product::search($request)->get();
-
-        // return $products;
-
-        return view('site.product.products', [
-            'products' => $products,
-            'categories' => $products,
-        ]);
+        $this->model = $model;
+        $this->isDestroyingAllowed = true;
+        $this->repo = $repo;
     }
 
-    public function create()
+    public function index()
     {
-        //
+        // return loggedCustomer()->id;
+        // return customerAuth()->check();
+        // return customerAuth()->user();
+
+        return $cartItems = $this->repo->getCart();
+        $total = $this->repo->getCartTotal();
+
+        return view('cart.index', compact('cartItems', 'total'));
     }
 
-    public function store(Request $request)
+    public function addToCart(Request $request, Product $product)
     {
-        //
+        $this->repo->addToCart($product, $request->quantity ?? 1);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
-    public function show(string $id)
+    public function updateCart(Request $request, $productId)
     {
-        //
+        $this->repo->updateCart($productId, $request->quantity);
+
+        return redirect()->route('cart.index')->with('success', 'Cart updated successfully!');
     }
 
-    public function edit(string $id)
+    public function removeFromCart($productId)
     {
-        //
+        $this->repo->removeFromCart($productId);
+
+        return redirect()->route('cart.index')->with('success', 'Product removed from cart successfully!');
     }
 
-    public function update(Request $request, string $id)
+    public function clearCart()
     {
-        //
-    }
+        $this->repo->clearCart();
 
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('cart.index')->with('success', 'Cart cleared successfully!');
     }
 }
