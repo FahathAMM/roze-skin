@@ -36,3 +36,14 @@ if (!function_exists('loggedCustomer')) {
         }
     }
 }
+
+if (!function_exists('loggedCustomerId')) {
+    function loggedCustomerId()
+    {
+        if (Auth::guard('customer')->check()) {
+            return Auth::guard('customer')->user()->id;
+        } else {
+            return 'customer not logged';
+        }
+    }
+}
