@@ -825,7 +825,7 @@
                     </li>
 
                     <li class="nav-cart">
-                        <a href="#shoppingCart" data-bs-toggle="modal" class="nav-icon-item">
+                        <a href="{{ url('shopping/card') }}" class="nav-icon-item">
                             <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -847,7 +847,7 @@
 @endif
 
 <!-- search -->
-<x-site.component.search />
+{{-- <x-site.component.search /> --}}
 <!-- /search -->
 
 <!-- shoppingCart -->
