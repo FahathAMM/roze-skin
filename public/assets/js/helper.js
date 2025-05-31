@@ -130,6 +130,10 @@ function getValue(field) {
     return $(`#${field}`).val();
 }
 
+function getValueByClass(field) {
+    return $(`.${field}`).val();
+}
+
 function setValue(field, val) {
     return $(`#${field}`).val(val);
 }
