@@ -62,6 +62,30 @@
             ],
             ['label' => $product->name, 'url' => '#', 'is_current' => true], // Mark the current page
         ];
+
+        $productInfo = [
+            'sku' => '53453412',
+            'vendor' => 'Modave',
+            'availability' => 'Instock',
+            'estimated_delivery' => [
+                'international' => '12-26 days',
+                'us' => '3-6 days',
+            ],
+            'return_days' => 45,
+            'store' => [
+                'name' => 'Fashion Modave',
+                'pickup' => 'Pickup available. Usually ready in 24 hours',
+                'address1' => '766 Rosalinda Forges Suite 044,',
+                'address2' => 'Gracielahaven, Oregon',
+            ],
+            'categories' => ['Clothes', 'Women', 'T-shirt'],
+            'extra_links' => [
+                ['icon' => 'icon-shipping', 'label' => 'Delivery & Return', 'target' => '#delivery_return'],
+                ['icon' => 'icon-question', 'label' => 'Ask A Question', 'target' => '#ask_question'],
+                ['icon' => 'icon-share', 'label' => 'Share', 'target' => '#share_social'],
+            ],
+            'payment_images' => ['img-1.png', 'img-2.png', 'img-3.png', 'img-4.png', 'img-5.png', 'img-6.png'],
+        ];
     @endphp
 
     <!-- breadcrumb -->
@@ -107,8 +131,11 @@
                 <div class="text-title">$68.00</div>
             </div>
         </div>
-        <a href="shopping-cart.html" class="tf-btn w-100 btn-fill radius-4"><span class="text text-btn-uppercase">View
-                cart</span></a>
+        <a href="shopping-cart.html" class="tf-btn w-100 btn-fill radius-4">
+            <span class="text text-btn-uppercase">
+                View cart
+            </span>
+        </a>
     </div>
     <!-- /tf-add-cart-success -->
 
@@ -154,66 +181,172 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+
+                    <div class="col-md-6">
                         <div class="tf-product-info-wrap position-relative">
                             <div class="tf-zoom-main"></div>
                             <div class="tf-product-info-list other-image-zoom">
                                 <div class="tf-product-info-heading">
                                     <div class="tf-product-info-name">
                                         <div class="text text-btn-uppercase">{{ $product->category->name ?? '' }}</div>
-                                        <h4 class="name">{{ $product->name ?? '' }}</h4>
-
+                                        <h3 class="name">{{ $product->name ?? '' }}</h3>
+                                        <div class="sub">
+                                            <div class="tf-product-info-rate">
+                                                <div class="list-star">
+                                                    <i class="icon icon-star"></i>
+                                                    <i class="icon icon-star"></i>
+                                                    <i class="icon icon-star"></i>
+                                                    <i class="icon icon-star"></i>
+                                                    <i class="icon icon-star"></i>
+                                                </div>
+                                                <div class="text text-caption-1">(134 reviews)</div>
+                                            </div>
+                                            <div class="tf-product-info-sold">
+                                                <i class="icon icon-lightning"></i>
+                                                <div class="text text-caption-1">18&nbsp;sold in last&nbsp;32&nbsp;hours
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="tf-product-info-desc content-display">
-                                        <p>
-                                            {!! $product->description ?? '' !!}
-                                        </p>
-
-                                        {{-- <p>
-                                            {!! $product->description ?? '' !!}
-                                        </p> --}}
-
+                                    {{-- simple_original_price  simple_sale_price --}}
+                                    <div class="tf-product-info-desc">
+                                        <div class="tf-product-info-price">
+                                            <h5 class="price-on-sale font-2">
+                                                {{ currency() . ' ' . $product->simple_original_price }}
+                                            </h5>
+                                            <div class="compare-at-price font-2">
+                                                {{ currency() . ' ' . $product->simple_sale_price }}
+                                            </div>
+                                            <div class="badges-on-sale text-btn-uppercase">
+                                                -25%
+                                            </div>
+                                        </div>
+                                        <p>{!! $product->description ?? '' !!}</p>
+                                        <div class="tf-product-info-liveview">
+                                            <i class="icon icon-eye"></i>
+                                            <p class="text-caption-1"><span class="liveview-count">28</span> people are
+                                                viewing this right now</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tf-product-info-choose-option">
+                                    <div class="tf-product-info-quantity">
+                                        <div class="title mb_12">Quantity:</div>
+                                        <div class="wg-quantity">
+                                            <span class="btn-quantity btn-decrease">-</span>
+                                            <input class="quantity-product" type="text" name="qty"
+                                                value="1">
+                                            <input class="product-price" type="hidden" name="price"
+                                                value="{{ $product->simple_sale_price }}">
 
-
-                                    {{-- <div class="tf-product-info-help">
-
+                                            <span class="btn-quantity btn-increase">+</span>
+                                        </div>
                                     </div>
+                                    <div>
+                                        <div class="tf-product-info-by-btn mb_10">
+                                            <a onclick="addCart({{ $product?->id }})" href="#shoppingCart"
+                                                data-bs-toggle="modal" id="sbtBtn"
+                                                class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"><span>
+                                                    Add to cart
+                                                </span>
+                                                {{-- <span class="tf-qty-price total-price">$79.99</span> --}}
+                                            </a>
+                                            {{-- <a href="#compare" data-bs-toggle="offcanvas" aria-controls="compare"
+                                                class="box-icon hover-tooltip compare btn-icon-action">
+                                                <span class="icon icon-gitDiff"></span>
+                                                <span class="tooltip text-caption-2">Compare</span>
+                                            </a> --}}
+                                            <a href="javascript:void(0);"
+                                                class="box-icon hover-tooltip text-caption-2 wishlist btn-icon-action">
+                                                <span class="icon icon-heart"></span>
+                                                <span class="tooltip text-caption-2">Wishlist</span>
+                                            </a>
+                                        </div>
+                                        <a href="{{ url('shopping/card') }}" class="btn-style-3 text-btn-uppercase">View
+                                            Cart</a>
+                                    </div>
+
+                                    <div class="tf-product-info-help">
+                                        <div class="tf-product-info-extra-link">
+                                            @foreach ($productInfo['extra_links'] as $link)
+                                                <a href="{{ $link['target'] }}" data-bs-toggle="modal"
+                                                    class="tf-product-extra-icon">
+                                                    <div class="icon">
+                                                        <i class="{{ $link['icon'] }}"></i>
+                                                    </div>
+                                                    <p class="text-caption-1">{{ $link['label'] }}</p>
+                                                </a>
+                                            @endforeach
+                                        </div>
+
+                                        {{-- <div class="dropdown">
+                                            <div class="dropdown-title ">
+                                                <div class="tf-product-info-view link">
+                                                    <div class="icon"><i class="icon-map-pin"></i></div>
+                                                    <span>View Store Information</span>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <div class="dropdown-content">
+                                                    <div class="dropdown-content-heading">
+                                                        <h5>Store Location</h5>
+                                                        <i class="icon icon-close"></i>
+                                                    </div>
+                                                    <div class="line-bt"></div>
+                                                    <div>
+                                                        <h6>{{ $productInfo['store']['name'] }}</h6>
+                                                        <p>{{ $productInfo['store']['pickup'] }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>{{ $productInfo['store']['address1'] }}</p>
+                                                        <p>{{ $productInfo['store']['address2'] }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+
                                     <ul class="tf-product-info-sku">
                                         <li>
-                                            <p class="text-caption-1">Name:</p>
-                                            <p class="text-caption-1 text-1">{{ $product->name }}</p>
+                                            <p class="text-caption-1">SKU:</p>
+                                            <p class="text-caption-1 text-1">{{ $productInfo['sku'] }}</p>
                                         </li>
                                         <li>
                                             <p class="text-caption-1">Vendor:</p>
-                                            <p class="text-caption-1 text-1">Modave</p>
+                                            <p class="text-caption-1 text-1">{{ $productInfo['vendor'] }}</p>
                                         </li>
                                         <li>
                                             <p class="text-caption-1">Available:</p>
-                                            <p class="text-caption-1 text-1">Instock</p>
+                                            <p class="text-caption-1 text-1">{{ $productInfo['availability'] }}</p>
                                         </li>
                                         <li>
                                             <p class="text-caption-1">Categories:</p>
                                             <p class="text-caption-1">
-                                                <a href="#" class="text-1 link">
-                                                    {{ $product->category->name ?? '' }}
-                                                </a>,
+                                                @foreach ($productInfo['categories'] as $category)
+                                                    <a href="#"
+                                                        class="text-1 link">{{ $category }}</a>{{ !$loop->last ? ',' : '' }}
+                                                @endforeach
                                             </p>
                                         </li>
-                                    </ul> --}}
-                                    <div>
-                                        <div class="tf-product-info-by-btn mb_10">
+                                    </ul>
+
+                                    <div class="tf-product-info-guranteed">
+                                        <div class="text-title">Guaranteed safe checkout:</div>
+                                        <div class="tf-payment">
+                                            @foreach ($productInfo['payment_images'] as $img)
+                                                <a href="#"><img src="{{ asset('site/images/payment/' . $img) }}"
+                                                        alt=""></a>
+                                            @endforeach
                                         </div>
-                                        <a href="#" class="btn-style-3 text-btn-uppercase"
-                                            onclick="{{ 'openInquiryModal' }}({{ $product }})">inquiry now</a>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    <!-- /tf-product-info-list -->
+
+
                 </div>
             </div>
         </div>
@@ -278,7 +411,7 @@
                             </div>
 
                             <div class="widget-content-inner">
-                                <x-site.show.videos :videos="$product->videos" />
+                                {{-- <x-site.show.videos :videos="$product->videos" /> --}}
                             </div>
                         </div>
                     </div>
@@ -286,4 +419,86 @@
             </div>
         </div>
     </section>
+
+
+    @push('scripts')
+        <script>
+            $('document').ready(function() {
+                totalPriceVariant();
+            });
+
+            async function addCart(productId) {
+
+                sLoading('sbtBtn')
+
+                if (productId == '') {
+                    // alertNotify('Please enter order number', 'error')
+                    return;
+                }
+
+                let endpoint = "{{ url('shopping/cart/add') }}/" + productId;
+
+                let payload = {
+                    productId: productId,
+                    productPrice: getValueByClass('product-price'),
+                    productQty: getValueByClass('quantity-product'),
+                }
+
+                const response = await fetchJsonRequest(endpoint, payload, 'POST');
+
+                if (response.status) {
+
+                    alertNotify(response.message, 'success')
+
+                } else {
+                    if (response.record.status == 2) {
+                        window.location.href = "{{ url('customer/login') }}";
+                    }
+                }
+
+                eLoading('sbtBtn', 'ADD TO CART')
+            }
+
+            var totalPriceVariant = function() {
+                $(".tf-product-info-list,.tf-cart-item").each(function() {
+                    var productItem = $(this);
+                    var basePrice =
+                        parseFloat(
+                            productItem.find(".price-on-sale").data("base-price")
+                        ) ||
+                        parseFloat(
+                            productItem.find(".price-on-sale").text().replace("$", "")
+                        );
+                    var quantityInput = productItem.find(".quantity-product");
+
+                    productItem.find(".btn-increase").on("click", function() {
+                        var currentQuantity = parseInt(quantityInput.val());
+                        quantityInput.val(currentQuantity + 1);
+                        updateTotalPrice(null, productItem);
+                    });
+
+                    productItem.find(".btn-decrease").on("click", function() {
+                        var currentQuantity = parseInt(quantityInput.val());
+                        if (currentQuantity > 1) {
+                            quantityInput.val(currentQuantity - 1);
+                            updateTotalPrice(null, productItem);
+                        }
+                    });
+
+                    function updateTotalPrice(price, scope) {
+                        var currentPrice =
+                            price ||
+                            parseFloat(
+                                scope.find(".price-on-sale").text().replace("$", "")
+                            );
+                        var quantity = parseInt(scope.find(".quantity-product").val());
+                        var totalPrice = currentPrice * quantity;
+                        scope.find(".total-price").text("$" + totalPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,
+                            ","));
+                    }
+                });
+            };
+        </script>
+    @endpush
+
 @endsection
