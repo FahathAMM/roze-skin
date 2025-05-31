@@ -30,20 +30,22 @@ class ShoppingCardController extends Controller
         $cartItems = $this->repo->getCart();
         $total = $this->repo->getCartTotal();
 
-        // resources\views\site\shoppingcard\index.blade.php
+        // return [
+        //     $cartItems,
+        //     $total
+        // ];
 
         return view('site.shoppingcard.index', compact('cartItems', 'total'));
     }
 
     public function addToCart(Request $request, Product $product)
     {
-        // return [
-        //     $request->all(),
-        //     $product
-        // ];
-        $this->repo->addToCart($product, $request->quantity ?? 1);
+        if (!customerAuth()->check()) {
+            return  $this->response('customer need to be login for add to cart', ['status' => '2'], false);
+        }
+        $response = $this->repo->addToCart($product, $request->productQty ?? 1);
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return  $this->response('The product has been added to your cart', null, true);
     }
 
     public function updateCart(Request $request, $productId)
