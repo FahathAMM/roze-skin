@@ -1,186 +1,218 @@
-  function sendData(url = null, payload = null, options = null, successCallback = null, errorCallback = null) {
+function sendData(url = null, payload = null, options = null, successCallback = null, errorCallback = null) {
 
-      let headers = [];
-      let body;
-      let method;
+    let headers = [];
+    let body;
+    let method;
 
-      if ((options && options.contentType) === 'application/json') {
-          headers['Content-Type'] = 'application/json';
-          headers['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;
-          body = JSON.stringify(payload);
-          console.log('option', options);
-          console.log('first');
-      } else if (options && options.contentType === 'multipart/form-data') {
-          // } else if (payload instanceof FormData) {
+    if ((options && options.contentType) === 'application/json') {
+        headers['Content-Type'] = 'application/json';
+        headers['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').content;
+        body = JSON.stringify(payload);
+        console.log('option', options);
+        console.log('first');
+    } else if (options && options.contentType === 'multipart/form-data') {
+        // } else if (payload instanceof FormData) {
 
-          body = payload;
-      } else {
-          console.error('Unsupported content type or data format');
-          // return;
-      }
-
-
-      if (options && options.headers) {
-          headers = {
-              ...headers,
-              ...options.headers
-          };
-      }
-
-      const config = {
-          method: options && options.method ? options.method : 'POST',
-          headers: headers,
-          ...options,
-      }
-
-      if (options && options.method.toUpperCase() === 'GET') {
-          url += '?' + new URLSearchParams(payload).toString();
-      } else {
-          config['body'] = body;
-      }
-
-      fetch(url, config)
-          .then(response => {
-              // Check if the response status is OK (200-299)
-              if (!response.ok) {
-                  throw new Error('Network response was not ok');
-              }
-              return response.json(); // Parse the response as JSON
-          })
-          .then(data => {
-              // If the request is successful, call the success callback with the response data
-              // if (options && options.successCallback) {
-              successCallback(data);
-              // }
-          })
-          .catch(error => {
-              // If there's an error, call the error callback with the error object
-              // if (options && options.errorCallback) {
-              errorCallback(error);
-              // } else {
-              // console.error('Error:', error);
-              // }
-          });
-  }
+        body = payload;
+    } else {
+        console.error('Unsupported content type or data format');
+        // return;
+    }
 
 
-  function associateErrors(errors, formId) {
-      let $form = $(`#${formId}`);
-      $form.find('.form-group .invalid-msg').text('');
-      $form.find('.form-group .form-control').removeClass('is-invalid');
+    if (options && options.headers) {
+        headers = {
+            ...headers,
+            ...options.headers
+        };
+    }
 
-      Object.keys(errors).forEach(function (fieldName) {
-          let $group = $form.find('[name="' + fieldName + '"]');
-          $group.addClass('is-invalid');
-          $group.closest('.form-group').find('.invalid-msg').text(errors[fieldName][0]);
-      });
-  }
+    const config = {
+        method: options && options.method ? options.method : 'POST',
+        headers: headers,
+        ...options,
+    }
 
-  function ajaxRequest(url = "", payload = {}, method = "GET") {
+    if (options && options.method.toUpperCase() === 'GET') {
+        url += '?' + new URLSearchParams(payload).toString();
+    } else {
+        config['body'] = body;
+    }
 
-      if (!url) {
-          alert('url not found')
-          return;
-      }
-      var res = "";
+    fetch(url, config)
+        .then(response => {
+            // Check if the response status is OK (200-299)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse the response as JSON
+        })
+        .then(data => {
+            // If the request is successful, call the success callback with the response data
+            // if (options && options.successCallback) {
+            successCallback(data);
+            // }
+        })
+        .catch(error => {
+            // If there's an error, call the error callback with the error object
+            // if (options && options.errorCallback) {
+            errorCallback(error);
+            // } else {
+            // console.error('Error:', error);
+            // }
+        });
+}
 
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-          }
-      });
-      $.ajax({
-          type: method,
-          url: url,
-          data: payload,
-          async: false,
-          dataType: 'json',
+function associateErrors(errors, formId) {
+    let $form = $(`#${formId}`);
+    $form.find('.form-group .invalid-msg').text('');
+    $form.find('.form-group .form-control').removeClass('is-invalid');
 
-          beforeSend: function () {
-              $("#p-bar").show();
-              $("#p-bar").css("width", "100%");
-              $("#p-bar").css("background-color", "blue");
-              $("#p-bar").attr("aria-valuenow", "100");
-          },
+    Object.keys(errors).forEach(function (fieldName) {
+        let $group = $form.find('[name="' + fieldName + '"]');
+        $group.addClass('is-invalid');
+        $group.closest('.form-group').find('.invalid-msg').text(errors[fieldName][0]);
+    });
+}
 
-          success: function (response, e) {
-              res = response;
-          },
+async function fetchJsonRequest(url = "", payload = {}, method = "GET") {
+    if (!url) {
+        alert('URL not found');
+        return;
+    }
 
-          complete: function (response) {
-              addProgressBar();
-          },
+    const headers = {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
+    };
 
-          error: function (data) {
-              console.log(data);
-          }
-      });
+    try {
+        const response = await fetch(url, {
+            method: method,
+            headers: headers,
+            body: method !== "GET" ? JSON.stringify(payload) : undefined
+        });
 
-      return res;
+        if (!response.ok) {
+            console.error('Error response:', response.status, response.statusText);
+            return null;
+        }
 
-  }
+        const data = await response.json();
 
-  function ajaxJsonRequest(url = "", payload = {}, method = "GET") {
+        return data;
 
-      if (!url) {
-          alert('url not found')
-          return;
-      }
-      var res = "";
-      $.ajaxSetup({
-          headers: {
-              'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-          }
-      });
-      $.ajax({
-          type: method,
-          url: url,
-          data: JSON.stringify(payload), // Convert payload to JSON string
-          async: false,
-          dataType: 'json',
-          contentType: 'application/json', // Set content type to JSON
-          success: function (response) {
-              res = response;
-          },
-          error: function (data) {
-              console.log(data);
-          }
-      });
+    } catch (error) {
+        console.error('Fetch error:', error);
+        return null;
+    }
+}
 
-      return res;
+function ajaxRequest(url = "", payload = {}, method = "GET") {
 
-  }
+    if (!url) {
+        alert('url not found')
+        return;
+    }
+    var res = "";
 
-  function myAjax() {
-      console.log('calling my ajax ');
-  }
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: method,
+        url: url,
+        data: payload,
+        async: false,
+        dataType: 'json',
 
-  function resetProgressBar() {
-      // Reset progress bar to 0%
-      $("#p-bar").show();
-      $("#p-bar").css("width", "0%");
-      $("#p-bar").attr("aria-valuenow", "0");
-      $("#p-bar").css("background-color", "blue");
-  }
+        beforeSend: function () {
+            $("#p-bar").show();
+            $("#p-bar").css("width", "100%");
+            $("#p-bar").css("background-color", "blue");
+            $("#p-bar").attr("aria-valuenow", "100");
+        },
 
-  function addProgressBar() {
-      setTimeout(() => {
-          $("#p-bar").hide();
-          $("#p-bar").css("width", "0%");
-          $("#p-bar").css("background-color", "blue");
-          $("#p-bar").attr("aria-valuenow", "0");
-      }, 1000);
+        success: function (response, e) {
+            res = response;
+        },
 
-      setTimeout(() => {
-          $("#p-bar").css("width", "0%");
-          $("#p-bar").hide(500);
-      }, 2000);
-  }
+        complete: function (response) {
+            addProgressBar();
+        },
 
-  function errorProgressBar() {
-      // Reset progress bar to 0%
-      $("#p-bar").show();
-      $("#p-bar").css("width", "100%");
-      $("#p-bar").attr("aria-valuenow", "100");
-      $("#p-bar").css("background-color", "red");
-  }
+        error: function (data) {
+            console.log(data);
+        }
+    });
+
+    return res;
+
+}
+
+function ajaxJsonRequest(url = "", payload = {}, method = "GET") {
+
+    if (!url) {
+        alert('url not found')
+        return;
+    }
+    var res = "";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: method,
+        url: url,
+        data: JSON.stringify(payload), // Convert payload to JSON string
+        async: false,
+        dataType: 'json',
+        contentType: 'application/json', // Set content type to JSON
+        success: function (response) {
+            res = response;
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
+
+    return res;
+
+}
+
+function myAjax() {
+    console.log('calling my ajax ');
+}
+
+function resetProgressBar() {
+    // Reset progress bar to 0%
+    $("#p-bar").show();
+    $("#p-bar").css("width", "0%");
+    $("#p-bar").attr("aria-valuenow", "0");
+    $("#p-bar").css("background-color", "blue");
+}
+
+function addProgressBar() {
+    setTimeout(() => {
+        $("#p-bar").hide();
+        $("#p-bar").css("width", "0%");
+        $("#p-bar").css("background-color", "blue");
+        $("#p-bar").attr("aria-valuenow", "0");
+    }, 1000);
+
+    setTimeout(() => {
+        $("#p-bar").css("width", "0%");
+        $("#p-bar").hide(500);
+    }, 2000);
+}
+
+function errorProgressBar() {
+    // Reset progress bar to 0%
+    $("#p-bar").show();
+    $("#p-bar").css("width", "100%");
+    $("#p-bar").attr("aria-valuenow", "100");
+    $("#p-bar").css("background-color", "red");
+}
