@@ -2,11 +2,17 @@
     'products' => [],
 ])
 
-<div class="tf-list-layout wrapper-shop" id="listLayout">
+
+
+{{-- <div class="tf-list-layout wrapper-shop" id="listLayout">
     @foreach ($products as $product)
+        @php
+            $viewSingleProduct = url('product/' . $product->sku);
+        @endphp
+
         <div class="card-product style-list" data-availability="Out of stock" data-brand="LV">
             <div class="card-product-wrapper">
-                <a href="product-detail.html" class="product-img">
+                <a href="{{ $viewSingleProduct }}" class="product-img">
                     <img class="lazyload img-product" data-src="{{ $product?->mainImage?->image }}"
                         src="{{ $product?->mainImage?->image }}" alt="image-product">
                     <img class="lazyload img-hover" data-src="{{ $product?->mainImage?->image }}"
@@ -15,7 +21,7 @@
                 <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
             </div>
             <div class="card-product-info">
-                <a href="product-detail.html" class="title link">{{ $product?->name ?? '' }}</a>
+                <a href="{{ $viewSingleProduct }}" class="title link">{{ $product?->name ?? '' }}</a>
                 <div class="price">
                     <span class="old-price">
                         {{ setting('currency') . ' ' . $product?->simple_sale_price }}
@@ -33,7 +39,6 @@
                         <span class="size-item box-icon">Hot</span>
                     </div>
                     <div class="list-product-btn">
-                        {{-- <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product"> --}}
                         <a onclick="addCart({{ $product?->id }}, {{ loggedCustomerId() }})" class="btn-main-product">
                             Add To cart
                         </a>
@@ -56,12 +61,16 @@
         </div>
     @endforeach
 
-</div>
+</div> --}}
+
 <div class="tf-grid-layout wrapper-shop tf-col-6" id="gridLayout">
     @foreach ($products as $product)
+        @php
+            $viewSingleProduct = url('product/' . $product->sku);
+        @endphp
         <div class="card-product grid" data-availability="In stock" data-brand="nike">
             <div class="card-product-wrapper">
-                <a href="product-detail.html" class="product-img">
+                <a href="{{ $viewSingleProduct }}" class="product-img">
                     <img class="lazyload img-product" data-src="{{ $product?->mainImage?->image }}"
                         src="{{ $product?->mainImage?->image }}" alt="image-product">
                     <img class="lazyload img-hover" data-src="{{ $product?->mainImage?->image }}"
@@ -97,12 +106,21 @@
                     </a>
                 </div>
                 <div class="list-btn-main">
-                    <a href="#shoppingCart" data-bs-toggle="modal" class="btn-main-product">Add To
-                        cart</a>
+                    <a href="#shoppingCart" onclick="addCart({{ $product?->id }})" data-bs-toggle="modal"
+                        class="btn-main-product">
+                        Add To cart
+                    </a>
+
+                    {{-- <a onclick="addCart({{ $product?->id }})" href="#shoppingCart" data-bs-toggle="modal" id="sbtBtn"
+                        class="btn-style-2 flex-grow-1 text-btn-uppercase fw-6 btn-add-to-cart"><span>
+                            Add to cart
+                        </span>
+                    </a> --}}
+
                 </div>
             </div>
             <div class="card-product-info">
-                <a href="product-detail.html" class="title link">Polarized sunglasses</a>
+                <a href="{{ $viewSingleProduct }}" class="title link">Polarized sunglasses</a>
                 <div class="price">
                     <span class="old-price">
                         {{ setting('currency') . ' ' . $product?->simple_sale_price }}
@@ -127,30 +145,38 @@
 
 @push('scripts')
     <script>
-        function addCart(productId, customerId = null) {
-            console.log(productId);
-            console.log(customerId);
+        async function addCart(productId) {
 
+            sLoading('sbtBtn')
 
             if (productId == '') {
                 // alertNotify('Please enter order number', 'error')
                 return;
             }
 
-            let url = "{{ url('shopping/cart/add') }}/" + productId;
+            let endpoint = "{{ url('shopping/cart/add') }}/" + productId;
 
             let payload = {
-                customerId: customerId
+                productId: productId,
+                productPrice: getValueByClass('product-price'),
+                productQty: getValueByClass('quantity-product'),
             }
 
-            let res = ajaxRequest(url, payload, 'POST');
-            console.log(res);
+            const response = await fetchJsonRequest(endpoint, payload, 'POST');
 
-            if (res.status) {
-                alertNotify(res.msg, 'success')
+            if (response.status) {
+
+                alertNotifySite(response.message, 'success')
+                // alertNotifySite('Updated product', 'success')
+
+
             } else {
-                alertNotify(res.msg, 'error')
+                if (response.record.status == 2) {
+                    window.location.href = "{{ url('customer/login') }}";
+                }
             }
+
+            eLoading('sbtBtn', 'ADD TO CART')
         }
     </script>
 @endpush
