@@ -450,9 +450,9 @@
     /* Modal Second
   -------------------------------------------------------------------------*/
     var clickModalSecond = function () {
-        $(".btn-add-to-cart").click(function () {
-            $(".tf-add-cart-success").addClass("active");
-        });
+        // $(".btn-add-to-cart").click(function () {
+        //     $(".tf-add-cart-success").addClass("active");
+        // });
         $(".tf-add-cart-success .tf-add-cart-close").click(function () {
             $(".tf-add-cart-success").removeClass("active");
         });
@@ -633,8 +633,8 @@
                     .text(
                         "$" +
                         newPrice
-                        .toFixed(2)
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            .toFixed(2)
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                     );
                 updateTotalPrice(newPrice, productItem);
             });
@@ -666,8 +666,8 @@
                     .text(
                         "$" +
                         totalPrice
-                        .toFixed(2)
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            .toFixed(2)
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                     );
             }
         });
@@ -682,8 +682,8 @@
             var scroll = $(this).data("scroll");
             var target = $(".item-scroll-target[data-scroll='" + scroll + "']");
             $("html, body").animate({
-                    scrollTop: target.offset().top - headerHeight,
-                },
+                scrollTop: target.offset().top - headerHeight,
+            },
                 100
             );
 
@@ -857,8 +857,8 @@
                     .find(".input-password");
                 const type =
                     $passwordInput.attr("type") === "password" ?
-                    "text" :
-                    "password";
+                        "text" :
+                        "password";
                 $passwordInput.attr("type", type);
                 $(this).toggleClass("unshow");
             });
@@ -1257,8 +1257,8 @@
             $("body").addClass("rtl");
             $("#toggle-rtl").text("ltr");
             $(
-                    ".tf-slideshow .tf-btn,.view-all-demo .tf-btn, .pagination-link, .pagination-item, .tf-breadcrumb-list,.tf-list-categories.style-1, .tf-list-categories .categories-item"
-                )
+                ".tf-slideshow .tf-btn,.view-all-demo .tf-btn, .pagination-link, .pagination-item, .tf-breadcrumb-list,.tf-list-categories.style-1, .tf-list-categories .categories-item"
+            )
                 .find(".icon-arrRight")
                 .removeClass("icon-arrRight")
                 .addClass("icon-arrLeft");
@@ -1336,7 +1336,7 @@
         customInput();
         chooseOption();
         withDiscount();
-        totalPriceVariant();
+        // totalPriceVariant();
         scrollGridProduct();
         scrollQuickView();
         hoverVideo();
