@@ -22,7 +22,7 @@
                     </div>
 
                     <ul class="tf-control-layout">
-                        <li class="tf-view-layout-switch sw-layout-list list-layout" data-value-layout="list">
+                        {{-- <li class="tf-view-layout-switch sw-layout-list list-layout" data-value-layout="list">
                             <div class="item">
                                 <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,7 @@
                                     <rect x="7.5" y="11.5" width="12" height="5" rx="2.5" stroke="#181818" />
                                 </svg>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="tf-view-layout-switch sw-layout-2" data-value-layout="tf-col-2">
                             <div class="item">
                                 <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -154,6 +154,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="wrapper-control-shop">
                     <div class="meta-filter-shop">
@@ -165,7 +166,6 @@
                     </div>
 
                     <x-site.product.product :products="$products" />
-
 
                 </div>
             </div>
