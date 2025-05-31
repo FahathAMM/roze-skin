@@ -16,7 +16,6 @@ class CartRepo extends BaseRepository
     {
         // dd(loggedCustomer());
         $this->model = $model;
-        $this->loggedCustomerId = loggedCustomer()->id ?? false;
     }
 
     public function __call($method, $parameters)
@@ -34,7 +33,7 @@ class CartRepo extends BaseRepository
     public function getCart()
     {
         if (customerAuth()->check()) {
-            return Cart::where('customer_id', $this->loggedCustomerId)->with('product')->get();
+            return Cart::where('customer_id', loggedCustomerId())->with('product')->get();
         } else {
             return Cart::where('session_id', session()->getId())->with('product')->get();
         }
@@ -45,17 +44,18 @@ class CartRepo extends BaseRepository
         $cartItem = $this->getExistingCartItem($product);
 
         if ($cartItem) {
-            $cartItem->quantity += $quantity;
+            $cartItem->quantity = $quantity;
             $cartItem->save();
         } else {
-            Cart::create([
-                'user_id' => customerAuth()->check() ? $this->loggedCustomerId : null,
+            $cartItem = Cart::create([
+                'customer_id' => customerAuth()->check() ? loggedCustomerId() : null,
                 'product_id' => $product->id,
                 'quantity' => $quantity,
-                'price' => $product->price,
+                'price' => $product->simple_sale_price,
                 'session_id' => session()->getId()
             ]);
         }
+        return $cartItem;
     }
 
     public function updateCart($productId, $quantity)
@@ -80,7 +80,7 @@ class CartRepo extends BaseRepository
     public function clearCart()
     {
         if (customerAuth()->check()) {
-            Cart::where('customer_id', $this->loggedCustomerId)->delete();
+            Cart::where('customer_id', loggedCustomerId())->delete();
         } else {
             Cart::where('session_id', session()->getId())->delete();
         }
@@ -103,7 +103,7 @@ class CartRepo extends BaseRepository
     protected function getExistingCartItem(Product $product)
     {
         if (customerAuth()->check()) {
-            return Cart::where('customer_id', $this->loggedCustomerId)
+            return Cart::where('customer_id', loggedCustomerId())
                 ->where('product_id', $product->id)
                 ->first();
         } else {
@@ -116,7 +116,7 @@ class CartRepo extends BaseRepository
     protected function getCartItemById($productId)
     {
         if (customerAuth()->check()) {
-            return Cart::where('customer_id', $this->loggedCustomerId)
+            return Cart::where('customer_id', loggedCustomerId())
                 ->where('product_id', $productId)
                 ->first();
         } else {
@@ -132,7 +132,7 @@ class CartRepo extends BaseRepository
             $sessionCart = Cart::where('session_id', session()->getId())->get();
 
             foreach ($sessionCart as $item) {
-                $existingCartItem = Cart::where('customer_id', $this->loggedCustomerId)
+                $existingCartItem = Cart::where('customer_id', loggedCustomerId())
                     ->where('product_id', $item->product_id)
                     ->first();
 
@@ -141,7 +141,7 @@ class CartRepo extends BaseRepository
                     $existingCartItem->save();
                     $item->delete();
                 } else {
-                    $item->user_id = $this->loggedCustomerId;
+                    $item->user_id = loggedCustomerId();
                     $item->session_id = null;
                     $item->save();
                 }
