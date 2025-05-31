@@ -79,3 +79,11 @@ if (!function_exists('getLastCronFailedIssueFoNotification')) {
         return CronFailure::orderBy('failed_at', 'desc')->where('is_fixed', 0)->take(5)->get();
     }
 }
+
+
+if (!function_exists('currency')) {
+    function currency()
+    {
+        return config('cpanel.app.currency');
+    }
+}
