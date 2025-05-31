@@ -20,8 +20,8 @@ Route::resource('aboutus', AboutUsController::class);
 Route::resource('download', DownloadController::class);
 
 
-Route::resource('shopping/card', ShoppingCardController::class);
-Route::post('shopping/cart/add/{product}', [ShoppingCardController::class, 'addToCart'])->name('cart.add');
+// Route::resource('shopping/card', ShoppingCardController::class);
+// Route::post('shopping/cart/add/{product}', [ShoppingCardController::class, 'addToCart'])->name('cart.add');
 
 
 // Route::group(['middleware' => ['web']], function () {
@@ -43,8 +43,14 @@ Route::post('/customer/register-store', [CustomerLoginController::class, 'regist
 Route::post('/customer/login', [CustomerLoginController::class, 'login']);
 Route::get('/customer/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
 
+
+Route::post('shopping/cart/add/{product}', [ShoppingCardController::class, 'addToCart'])->name('cart.add');
+
 Route::middleware('customer')->group(function () {
-    Route::get('/customer/dashboard', function () {
-        return view('customer.dashboard');
-    })->name('customer.dashboard');
+
+    // Route::get('/customer/dashboard', function () {
+    //     return view('customer.dashboard');
+    // })->name('customer.dashboard');
+
+    Route::resource('shopping/card', ShoppingCardController::class);
 });
