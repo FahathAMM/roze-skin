@@ -32,11 +32,6 @@ class HomeController extends Controller
         $products = Product::orderBy('created_at', 'desc')->take(9)->with('category')->get();
         $categories = getParentCategories();
 
-        // return $categories;
-
-        // return getParentCategories();
-        // return getCategoriesForHeader();
-
         return view('site.home.index', [
             'categories' => $categories,
             'products' => $products,
