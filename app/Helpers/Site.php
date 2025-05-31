@@ -47,3 +47,10 @@ if (!function_exists('loggedCustomerId')) {
         }
     }
 }
+
+if (!function_exists('aa')) {
+    function aa()
+    {
+        return 'aa';
+    }
+}
