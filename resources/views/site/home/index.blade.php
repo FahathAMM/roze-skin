@@ -7,161 +7,7 @@
         <!-- grid collection -->
         <x-site.home.skin />
         <!-- /grid collection -->
-        <!-- Categories -->
-        <section>
-            <div class="container">
-                <div class="heading-section text-center wow fadeInUp">
-                    <h3 class="heading">Shop by product type</h3>
-                    <p class="subheading text-secondary">Fresh styles just in! Elevate your look.</p>
-                </div>
-                <div class="flat-collection-circle wow fadeInUp" data-wow-delay="0.1s">
-                    <div dir="ltr" class="swiper tf-sw-categories" data-preview="6" data-tablet="4" data-mobile-sm="3"
-                        data-mobile="2" data-space-lg="30" data-space-md="20" data-space="15" data-pagination="2"
-                        data-pagination-md="4" data-pagination-lg="1">
-                        <div class="swiper-wrapper">
-                            <!-- item 1 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle6.jpg"
-                                            src="images/collections/collection-circle/cls-circle6.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <div>
-                                            <a href="shop-collection.html" class="cls-title">
-                                                <h6 class="text">Serums</h6>
-                                                <i class="icon icon-arrowUpRight"></i>
-                                            </a>
-                                        </div>
-                                        <div class="count text-secondary">12 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 2 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle7.jpg"
-                                            src="images/collections/collection-circle/cls-circle7.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <div>
-                                            <a href="shop-collection.html" class="cls-title">
-                                                <h6 class="text">Cleansers</h6>
-                                                <i class="icon icon-arrowUpRight"></i>
-                                            </a>
-                                        </div>
-                                        <div class="count text-secondary">16 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 3 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle8.jpg"
-                                            src="images/collections/collection-circle/cls-circle8.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <div>
-                                            <a href="shop-collection.html" class="cls-title">
-                                                <h6 class="text">Creams & Salves</h6>
-                                                <i class="icon icon-arrowUpRight"></i>
-                                            </a>
-                                        </div>
-                                        <div class="count text-secondary">18 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 4 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle9.jpg"
-                                            src="images/collections/collection-circle/cls-circle9.jpg" alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <a href="shop-collection.html" class="cls-title">
-                                            <h6 class="text">Oils & Serums</h6>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </a>
-                                        <div class="count text-secondary">24 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 5 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle10.jpg"
-                                            src="images/collections/collection-circle/cls-circle10.jpg"
-                                            alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <a href="shop-collection.html" class="cls-title">
-                                            <h6 class="text">Moisturizers</h6>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </a>
-                                        <div class="count text-secondary">08 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 6 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle11.jpg"
-                                            src="images/collections/collection-circle/cls-circle11.jpg"
-                                            alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <a href="shop-collection.html" class="cls-title">
-                                            <h6 class="text">Toners</h6>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </a>
-                                        <div class="count text-secondary">26 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- item 7 -->
-                            <div class="swiper-slide">
-                                <div class="collection-circle hover-img">
-                                    <a href="shop-default-grid.html" class="img-style">
-                                        <img class="lazyload"
-                                            data-src="images/collections/collection-circle/cls-circle7.jpg"
-                                            src="images/collections/collection-circle/cls-circle7.jpg"
-                                            alt="collection-img">
-                                    </a>
-                                    <div class="collection-content text-center">
-                                        <div>
-                                            <a href="shop-collection.html" class="cls-title">
-                                                <h6 class="text">Cleansers</h6>
-                                                <i class="icon icon-arrowUpRight"></i>
-                                            </a>
-                                        </div>
-                                        <div class="count text-secondary">12 items</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex d-lg-none sw-pagination-categories sw-dots type-circle justify-content-center">
-                        </div>
 
-                    </div>
-                    <div class="nav-prev-categories d-none d-lg-flex nav-sw style-line nav-sw-left"><i
-                            class="icon icon-arrLeft"></i></div>
-                    <div class="nav-next-categories d-none d-lg-flex nav-sw style-line nav-sw-right"><i
-                            class="icon icon-arrRight"></i></div>
-                </div>
-            </div>
-        </section>
-        <!-- /Categories -->
         <!-- Top picks -->
         <section class="flat-spacing">
             <div class="container">
@@ -211,135 +57,53 @@
         <!-- Banner with text -->
         <section class="flat-spacing">
             <div class="container">
-                <div class="row flat-img-with-text-v2">
+                <div class="row flat-img-with-text-v2" style="align-items:unset">
                     <div class="col-lg-7 col-md-6">
                         <div class="banner-left">
                             <div class="box-title wow fadeInUp">
-                                <h3>Ready to Glow?
+                                <h4>ROZE was born from a mother’s
                                     <br class="d-none d-lg-block">
-                                    It Cosmetics
-                                </h3>
-                                <p>Bestow a flush of blush and a radiance boost in one step with the NEW Glow With
-                                    Confidence Sun Blush - a balm infused with hyaluronic acid, vitamin E and peptides </p>
-                            </div>
-                            <ul class="tab-banner" role="tablist">
-                                <li class="nav-tab-item wow fadeInUp" data-wow-delay="0s" role="presentation">
-                                    <a href="#tabBannerCls1" class="nav-tab-link hover-cursor-img" data-bs-toggle="tab">
-                                        <h5 class="title text-line-clamp-1">Face</h5>
-                                        <div class="arr-link">
-                                            <span class="text-btn-uppercase text-more">More</span>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </div>
-                                        <div class="hover-image">
-                                            <img src="images/collections/banner-collection/banner-cls11.jpg"
-                                                alt="Hover Image">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-tab-item wow fadeInUp" data-wow-delay="0.1s" role="presentation">
-                                    <a href="#tabBannerCls2" class="active nav-tab-link hover-cursor-img"
-                                        data-bs-toggle="tab">
-                                        <h5 class="title text-line-clamp-1">Accessories</h5>
-                                        <div class="arr-link">
-                                            <span class="text-btn-uppercase text-more">More</span>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </div>
-                                        <div class="hover-image">
-                                            <img src="images/collections/banner-collection/banner-cls10.jpg"
-                                                alt="Hover Image">
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="nav-tab-item wow fadeInUp" data-wow-delay="0.2s" role="presentation">
-                                    <a href="#tabBannerCls3" class="nav-tab-link hover-cursor-img" data-bs-toggle="tab">
-                                        <h5 class="title text-line-clamp-1">Body</h5>
-                                        <div class="arr-link">
-                                            <span class="text-btn-uppercase text-more">More</span>
-                                            <i class="icon icon-arrowUpRight"></i>
-                                        </div>
-                                        <div class="hover-image">
-                                            <img src="images/collections/banner-collection/banner-cls9.jpg"
-                                                alt="Hover Image">
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="wow fadeInUp">
-                                <a href="shop-collection.html" class="btn-line">View All Collection</a>
+                                    love and a woman’s determination
+                                </h4>
+                                <p>
+                                    ROZE was born from a mother’s love and a woman’s determination.
+
+                                    When I couldn’t find skincare gentle enough for my daughter’s delicate skin—yet
+                                    effective enough for my own—I decided to create it myself.
+
+                                    At Roze, every formula is crafted with the same care and commitment I give to my family.
+                                    Because I believe skincare should be more than just clean—it should be comforting,
+                                    trustworthy, and deeply nurturing.
+                                </p>
+
+                                <p>
+                                    From my heart to your skin
+                                </p>
+
+                                <b>
+                                    Nadia,
+                                </b>
+
+                                <p>
+                                    Founder of Roze Skincare
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6">
                         <div class="banner-right flat-animate-tab">
                             <div class="tab-content">
-                                <div class="tab-pane" id="tabBannerCls1" role="tabpanel">
-                                    <div class="collection-position-2 hover-img">
-                                        <a class="img-style">
-                                            <img class="lazyload"
-                                                data-src="images/collections/banner-collection/banner-cls11.jpg"
-                                                src="images/collections/banner-collection/banner-cls11.jpg"
-                                                alt="banner-cls">
-                                            <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                        </a>
-                                        <div class="content cls-content">
-                                            <div class="cls-info">
-                                                <a href="product-detail.html"
-                                                    class="text-title link text-line-clamp-1">Rejuvenate Restorative Face
-                                                    Oil</a>
-                                                <div class="price">
-                                                    <span class="old-price">$98.00</span>
-                                                    <span class="new-price">$219.99</span>
-                                                </div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal"
-                                                class="cls-btn text-btn-uppercase">Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="tab-pane active show" id="tabBannerCls2" role="tabpanel">
                                     <div class="collection-position-2 hover-img">
                                         <a class="img-style">
-                                            <img class="lazyload"
-                                                data-src="images/collections/banner-collection/banner-cls10.jpg"
-                                                src="images/collections/banner-collection/banner-cls10.jpg"
-                                                alt="banner-cls">
-                                            <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
+                                            <iframe class="instagram-media instagram-media-rendered" id="instagram-embed-0"
+                                                src="https://www.instagram.com/reel/DIeiBkThCva/embed/?cr=1&amp;v=14&amp;wp=697&amp;rd=https%3A%2F%2Frozeskin.com&amp;rp=%2F#%7B%22ci%22%3A0%2C%22os%22%3A2885.5%2C%22ls%22%3A2259.300000011921%2C%22le%22%3A2818.2000000029802%7D"
+                                                allowtransparency="true" allowfullscreen="true" frameborder="0"
+                                                height="615" data-instgrm-payload-id="instagram-media-payload-0"
+                                                scrolling="no"
+                                                style="max-width: 100%; width: auto; background-color: white; border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
                                         </a>
-                                        <div class="content cls-content">
-                                            <div class="cls-info">
-                                                <a href="product-detail.html" class="text-title link">Rejuvenate
-                                                    Restorative Face Oil</a>
-                                                <div class="price">
-                                                    <span class="old-price">$98.00</span>
-                                                    <span class="new-price">$219.99</span>
-                                                </div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal"
-                                                class="cls-btn text-btn-uppercase">Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tabBannerCls3" role="tabpanel">
-                                    <div class="collection-position-2 hover-img">
-                                        <a class="img-style">
-                                            <img class="lazyload"
-                                                data-src="images/collections/banner-collection/banner-cls9.jpg"
-                                                src="images/collections/banner-collection/banner-cls9.jpg"
-                                                alt="banner-cls">
-                                            <div class="on-sale-wrap"><span class="on-sale-item">-25%</span></div>
-                                        </a>
-                                        <div class="content cls-content">
-                                            <div class="cls-info">
-                                                <a href="product-detail.html" class="text-title link">Rejuvenate
-                                                    Restorative Face Oil</a>
-                                                <div class="price">
-                                                    <span class="old-price">$98.00</span>
-                                                    <span class="new-price">$219.99</span>
-                                                </div>
-                                            </div>
-                                            <a href="#quickView" data-bs-toggle="modal"
-                                                class="cls-btn text-btn-uppercase">Quick View</a>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -583,83 +347,10 @@
             </div>
         </section>
         <!-- /Iconbox -->
-        <!-- Gallery shop gram -->
-        <section>
-            <div class="heading-section text-center wow fadeInUp">
-                <h3 class="heading">Shop Instagram</h3>
-                <p class="subheading text-secondary">Elevate your wardrobe with fresh finds today!</p>
-            </div>
-            <div dir="ltr" class="swiper tf-sw-shop-gallery" data-preview="6" data-tablet="4" data-mobile-sm="3"
-                data-mobile="2" data-space-lg="0" data-space-md="0" data-space="0" data-pagination="2"
-                data-pagination-md="3" data-pagination-lg="1">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".1s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty1.jpg"
-                                    src="images/gallery/gallery-beauty1.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".2s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty2.jpg"
-                                    src="images/gallery/gallery-beauty2.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".3s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty3.jpg"
-                                    src="images/gallery/gallery-beauty3.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".4s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty4.jpg"
-                                    src="images/gallery/gallery-beauty4.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".5s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty5.jpg"
-                                    src="images/gallery/gallery-beauty5.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="gallery-item rounded-0 hover-overlay hover-img wow fadeInUp" data-wow-delay=".6s">
-                            <div class="img-style">
-                                <img class="lazyload img-hover" data-src="images/gallery/gallery-beauty6.jpg"
-                                    src="images/gallery/gallery-beauty6.jpg" alt="image-gallery">
-                            </div>
-                            <a href="product-detail.html" class="box-icon hover-tooltip"><span
-                                    class="icon icon-eye"></span> <span class="tooltip">View Product</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /Gallery shop gram -->
+
 
         <!-- Footer -->
-        <footer id="footer" class="footer">
+        {{-- <footer id="footer" class="footer">
             <div class="footer-wrap">
                 <div class="footer-body">
                     <div class="container">
@@ -857,8 +548,9 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> --}}
         <!-- /Footer -->
+
         <!-- toolbar-bottom -->
         <div class="tf-toolbar-bottom">
             <div class="toolbar-item">
