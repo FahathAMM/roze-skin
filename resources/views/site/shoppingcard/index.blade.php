@@ -1,13 +1,20 @@
 @extends('layout.app-site')
 @section('title', 'Product')
 @section('content')
+    <x-site.component.page-title title="Cart" :breadcrumbs="[['label' => 'Shop', 'url' => route('product.index')], ['label' => 'Cart']]" />
+
+    @php
+        $currency = currency();
+    @endphp
+
     <section class="flat-spacing">
         <div class="container">
             <div class="row">
                 <div class="col-xl-8">
-                    <div class="tf-cart-sold">
+                    {{-- <div class="tf-cart-sold">
                         <div class="notification-sold bg-surface">
-                            <img class="icon" src="images/logo/icon-fire.png" alt="img">
+                            <img class="icon" src="https://themesflat.co/html/modave/images/logo/icon-fire.png"
+                                alt="img">
                             <div class="count-text">Your cart will expire in <div class="js-countdown time-count"
                                     data-timer="600" data-labels=":,:,:,">
                                     <div aria-hidden="true" class="countdown__timer"><span class="countdown__item"
@@ -32,11 +39,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <form>
                         <table class="tf-table-page-cart">
                             <thead>
                                 <tr>
+                                    <th>Img</th>
                                     <th>Products</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
@@ -45,206 +53,56 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="tf-cart-item file-delete">
-                                    <td class="tf-cart-item_product">
-                                        <a href="product-detail.html" class="img-box">
-                                            <img src="images/products/womens/women-19.jpg" alt="product">
-                                        </a>
-                                        <div class="cart-info">
-                                            <a href="product-detail.html" class="cart-title link">V-neck cotton T-shirt</a>
-                                            <div class="variant-box">
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">Blue</option>
-                                                        <option>Black</option>
-                                                        <option>White</option>
-                                                        <option>Red</option>
-                                                        <option>Beige</option>
-                                                        <option>Pink</option>
-                                                    </select>
-                                                </div>
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">XL</option>
-                                                        <option>XS</option>
-                                                        <option>S</option>
-                                                        <option>M</option>
-                                                        <option>L</option>
-                                                        <option>XL</option>
-                                                        <option>2XL</option>
-                                                    </select>
-                                                </div>
+
+                                @foreach ($cartItems as $item)
+                                    <tr class="tf-cart-item file-delete">
+                                        <td style=" max-width: 100px; ">
+                                            <a href="{{ url('product/' . $item->product->sku) }}" class="img-box">
+                                                <img src="{{ $item?->product?->mainImage?->image }}" alt="product"
+                                                    style=" width: 100%; height: 100%; object-fit: cover;">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <div class="cart-info">
+                                                <a href="{{ url('product/' . $item->product->sku) }}"
+                                                    class="cart-title link">
+                                                    {{ $item?->product?->name ?? '' }}
+                                                </a>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Price" class="tf-cart-item_price text-center">
-                                        <div class="cart-price text-button price-on-sale">$60.00</div>
-                                    </td>
-                                    <td data-cart-title="Quantity" class="tf-cart-item_quantity">
-                                        <div class="wg-quantity mx-md-auto">
-                                            <span class="btn-quantity btn-decrease">-</span>
-                                            <input type="text" class="quantity-product" name="number" value="1">
-                                            <span class="btn-quantity btn-increase">+</span>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Total" class="tf-cart-item_total text-center">
-                                        <div class="cart-total text-button total-price">$60.00</div>
-                                    </td>
-                                    <td data-cart-title="Remove" class="remove-cart"><span
-                                            class="remove icon icon-close"></span></td>
-                                </tr>
-                                <tr class="tf-cart-item file-delete">
-                                    <td class="tf-cart-item_product">
-                                        <a href="product-detail.html" class="img-box">
-                                            <img src="images/products/womens/women-1.jpg" alt="product">
-                                        </a>
-                                        <div class="cart-info">
-                                            <a href="product-detail.html" class="cart-title link">V-neck cotton T-shirt</a>
-                                            <div class="variant-box">
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">Blue</option>
-                                                        <option>Black</option>
-                                                        <option>White</option>
-                                                        <option>Red</option>
-                                                        <option>Beige</option>
-                                                        <option>Pink</option>
-                                                    </select>
-                                                </div>
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">XL</option>
-                                                        <option>XS</option>
-                                                        <option>S</option>
-                                                        <option>M</option>
-                                                        <option>L</option>
-                                                        <option>XL</option>
-                                                        <option>2XL</option>
-                                                    </select>
-                                                </div>
+                                        </td>
+                                        <td data-cart-title="Price" class="tf-cart-item_price text-center">
+                                            <div class="cart-price text-button price-on-sale">
+                                                {{-- $60.00 --}}
+                                                {{ $currency . ' ' . $item->price }}
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Price" class="tf-cart-item_price text-center">
-                                        <div class="cart-price text-button price-on-sale">$40.00</div>
-                                    </td>
-                                    <td data-cart-title="Quantity" class="tf-cart-item_quantity">
-                                        <div class="wg-quantity mx-md-auto">
-                                            <span class="btn-quantity btn-decrease">-</span>
-                                            <input type="text" class="quantity-product" name="number" value="1">
-                                            <span class="btn-quantity btn-increase">+</span>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Total" class="tf-cart-item_total text-center">
-                                        <div class="cart-total text-button total-price">$40.00</div>
-                                    </td>
-                                    <td data-cart-title="Remove" class="remove-cart"><span
-                                            class="remove icon icon-close"></span></td>
-                                </tr>
-                                <tr class="tf-cart-item file-delete">
-                                    <td class="tf-cart-item_product">
-                                        <a href="product-detail.html" class="img-box">
-                                            <img src="images/products/womens/women-29.jpg" alt="product">
-                                        </a>
-                                        <div class="cart-info">
-                                            <a href="product-detail.html" class="cart-title link">V-neck cotton
-                                                T-shirt</a>
-                                            <div class="variant-box">
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">Blue</option>
-                                                        <option>Black</option>
-                                                        <option>White</option>
-                                                        <option>Red</option>
-                                                        <option>Beige</option>
-                                                        <option>Pink</option>
-                                                    </select>
-                                                </div>
-                                                <div class="tf-select">
-                                                    <select>
-                                                        <option selected="selected">XL</option>
-                                                        <option>XS</option>
-                                                        <option>S</option>
-                                                        <option>M</option>
-                                                        <option>L</option>
-                                                        <option>XL</option>
-                                                        <option>2XL</option>
-                                                    </select>
-                                                </div>
+                                        </td>
+                                        <td data-cart-title="Quantity" class="tf-cart-item_quantity">
+                                            <div class="wg-quantity mx-md-auto">
+                                                <span class="btn-quantity btn-decrease">-</span>
+                                                <input type="text" class="quantity-product" name="number"
+                                                    value="{{ $item->quantity }}">
+
+                                                <input type="hidden" class="cart-id" name="number"
+                                                    value="{{ $item->id }}">
+
+                                                <input type="hidden" class="product-id" name="number"
+                                                    value="{{ $item->product->id }}">
+                                                <span class="btn-quantity btn-increase">+</span>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Price" class="tf-cart-item_price text-center">
-                                        <div class="cart-price"><span class="old-price">$80.00</span><span
-                                                class="text-button new-price price-on-sale">$129.00</span></div>
-                                    </td>
-                                    <td data-cart-title="Quantity" class="tf-cart-item_quantity">
-                                        <div class="wg-quantity mx-md-auto">
-                                            <span class="btn-quantity btn-decrease">-</span>
-                                            <input type="text" class="quantity-product" name="number"
-                                                value="1">
-                                            <span class="btn-quantity btn-increase">+</span>
-                                        </div>
-                                    </td>
-                                    <td data-cart-title="Total" class="tf-cart-item_total text-center">
-                                        <div class="cart-total text-button total-price">$129.00</div>
-                                    </td>
-                                    <td data-cart-title="Remove" class="remove-cart"><span
-                                            class="remove icon icon-close"></span></td>
-                                </tr>
+                                        </td>
+                                        <td data-cart-title="Total" class="tf-cart-item_total text-center">
+                                            <div class="cart-total text-button total-price">
+                                                {{ $currency . ' ' . number_format($item->quantity * $item->price, 2) }}
+                                            </div>
+                                        </td>
+                                        <td data-cart-title="Remove" class="remove-cart">
+                                            <span class="remove icon icon-close"></span>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <div class="ip-discount-code">
-                            <input type="text" placeholder="Add voucher discount">
-                            <button class="tf-btn"><span class="text">Apply Code</span></button>
-                        </div>
-                        <div class="group-discount">
-                            <div class="box-discount">
-                                <div class="discount-top">
-                                    <div class="discount-off">
-                                        <div class="text-caption-1">Discount</div>
-                                        <span class="sale-off text-btn-uppercase">10% OFF</span>
-                                    </div>
-                                    <div class="discount-from">
-                                        <p class="text-caption-1">For all orders <br> from 200$</p>
-                                    </div>
-                                </div>
-                                <div class="discount-bot">
-                                    <span class="text-btn-uppercase">Mo234231</span>
-                                    <button class="tf-btn"><span class="text">Apply Code</span></button>
-                                </div>
-                            </div>
-                            <div class="box-discount active">
-                                <div class="discount-top">
-                                    <div class="discount-off">
-                                        <div class="text-caption-1">Discount</div>
-                                        <span class="sale-off text-btn-uppercase">10% OFF</span>
-                                    </div>
-                                    <div class="discount-from">
-                                        <p class="text-caption-1">For all orders <br> from 200$</p>
-                                    </div>
-                                </div>
-                                <div class="discount-bot">
-                                    <span class="text-btn-uppercase">Mo234231</span>
-                                    <button class="tf-btn"><span class="text">Apply Code</span></button>
-                                </div>
-                            </div>
-                            <div class="box-discount">
-                                <div class="discount-top">
-                                    <div class="discount-off">
-                                        <div class="text-caption-1">Discount</div>
-                                        <span class="sale-off text-btn-uppercase">10% OFF</span>
-                                    </div>
-                                    <div class="discount-from">
-                                        <p class="text-caption-1">For all orders <br> from 200$</p>
-                                    </div>
-                                </div>
-                                <div class="discount-bot">
-                                    <span class="text-btn-uppercase">Mo234231</span>
-                                    <button class="tf-btn"><span class="text">Apply Code</span></button>
-                                </div>
-                            </div>
-                        </div>
+
                     </form>
                 </div>
                 <div class="col-xl-4">
@@ -253,11 +111,9 @@
                             <h5 class="title">Order Summary</h5>
                             <div class="subtotal text-button d-flex justify-content-between align-items-center">
                                 <span>Subtotal</span>
-                                <span class="total">-$80.00</span>
-                            </div>
-                            <div class="discount text-button d-flex justify-content-between align-items-center">
-                                <span>Discounts</span>
-                                <span class="total">-$80.00</span>
+                                <span class="total">
+                                    {{ $currency . ' ' . number_format($total, 2) }}
+                                </span>
                             </div>
                             <div class="ship">
                                 <span class="text-button">Shipping</span>
@@ -267,28 +123,18 @@
                                             checked="">
                                         <label for="free">
                                             <span>Free Shipping</span>
-                                            <span class="price">$0.00</span>
-                                        </label>
-                                    </fieldset>
-                                    <fieldset class="ship-item">
-                                        <input type="radio" name="ship-check" class="tf-check-rounded" id="local">
-                                        <label for="local">
-                                            <span>Local:</span>
-                                            <span class="price">$35.00</span>
-                                        </label>
-                                    </fieldset>
-                                    <fieldset class="ship-item">
-                                        <input type="radio" name="ship-check" class="tf-check-rounded" id="rate">
-                                        <label for="rate">
-                                            <span>Flat Rate:</span>
-                                            <span class="price">$35.00</span>
+                                            <span class="price">
+                                                {{ $currency . ' ' . number_format(0, 2) }}
+                                            </span>
                                         </label>
                                     </fieldset>
                                 </div>
                             </div>
                             <h5 class="total-order d-flex justify-content-between align-items-center">
                                 <span>Total</span>
-                                <span class="total">$186,99</span>
+                                <span class="total">
+                                    {{ $currency . ' ' . number_format($total, 2) }}
+                                </span>
                             </h5>
                             <div class="box-progress-checkout">
                                 <fieldset class="check-agree">
@@ -306,5 +152,87 @@
             </div>
         </div>
     </section>
+
+
+    @push('scripts')
+        <script>
+            var totalPriceVariant = function() {
+                $(".tf-product-info-list,.tf-cart-item").each(function() {
+                    var productItem = $(this);
+
+                    var basePrice = parseFloat(productItem.find(".price-on-sale").data("base-price")) || parseFloat(
+                        productItem.find(".price-on-sale").text().replace("AED", ""));
+
+                    var quantityInput = productItem.find(".quantity-product");
+                    var cartId = productItem.find(".cart-id").val();
+                    var productId = productItem.find(".product-id").val();
+
+                    productItem.find(".color-btn, .size-btn").on("click", function() {
+                        var newPrice = parseFloat($(this).data("price")) || basePrice;
+                        quantityInput.val(1);
+                        productItem.find(".price-on-sale").text("AED " + newPrice.toFixed(2).replace(
+                            /\B(?=(\d{3})+(?!\d))/g, ","));
+                        updateTotalPrice(newPrice, productItem, productId);
+                    });
+
+                    productItem.find(".btn-increase").on("click", function() {
+                        var currentQuantity = parseInt(quantityInput.val());
+                        quantityInput.val(currentQuantity + 1);
+                        updateTotalPrice(null, productItem, productId);
+                    });
+
+                    productItem.find(".btn-decrease").on("click", function() {
+                        var currentQuantity = parseInt(quantityInput.val());
+                        if (currentQuantity > 1) {
+                            quantityInput.val(currentQuantity - 1);
+                            updateTotalPrice(null, productItem, productId);
+                        }
+                    });
+
+                    function updateTotalPrice(price, scope, productId = null) {
+
+                        var currentPrice =
+                            price ||
+                            parseFloat(
+                                scope.find(".price-on-sale").text().replace("AED", "")
+                            );
+                        var quantity = parseInt(scope.find(".quantity-product").val());
+                        var totalPrice = currentPrice * quantity;
+                        scope.find(".total-price").text("AED " + totalPrice.toFixed(2).replace(
+                            /\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        addCart(productId, quantity)
+                    }
+                });
+            };
+
+            async function addCart(productId, quantity) {
+                if (productId == '') {
+                    return;
+                }
+
+                let endpoint = "{{ url('shopping/cart/add') }}/" + productId;
+
+                let payload = {
+                    productId: productId,
+                    productQty: quantity,
+                }
+
+                const response = await fetchJsonRequest(endpoint, payload, 'POST');
+
+                if (response.status) {
+                    alertNotifySite('Updated product', 'success')
+                }
+            }
+
+            totalPriceVariant();
+        </script>
+    @endpush
+
+    <style>
+        .text-button {
+            font-size: 14px;
+        }
+    </style>
 
 @endsection
