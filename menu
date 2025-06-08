@@ -1,0 +1,113 @@
+https://dribbble.com/shots/22191316-E-commerce-Admin-Order-List-Product-UI-UX-Design
+
+$adminMenu = [
+    [
+        'module' => 'Dashboard',
+        'icon' => 'fas fa-tachometer-alt',
+        'route' => 'admin.dashboard',
+        'children' => []
+    ],
+    [
+        'module' => 'Product Management',
+        'icon' => 'fas fa-boxes',
+        'route' => null,
+        'children' => [
+            ['title' => 'Products', 'route' => 'admin.products.index'],
+            ['title' => 'Add New Product', 'route' => 'admin.products.create'],
+            ['title' => 'Categories', 'route' => 'admin.categories.index'],
+            ['title' => 'Brands', 'route' => 'admin.brands.index'],
+            ['title' => 'Attributes', 'route' => 'admin.attributes.index'],
+            ['title' => 'Tags', 'route' => 'admin.tags.index'],
+            ['title' => 'Inventory', 'route' => 'admin.inventory.index'],
+        ]
+    ],
+    [
+        'module' => 'Order Management',
+        'icon' => 'fas fa-shopping-cart',
+        'route' => null,
+        'children' => [
+            ['title' => 'All Orders', 'route' => 'admin.orders.index'],
+            ['title' => 'Pending Orders', 'route' => 'admin.orders.pending'],
+            ['title' => 'Shipped Orders', 'route' => 'admin.orders.shipped'],
+            ['title' => 'Delivered Orders', 'route' => 'admin.orders.delivered'],
+            ['title' => 'Cancelled Orders', 'route' => 'admin.orders.cancelled'],
+            ['title' => 'Returns', 'route' => 'admin.orders.returns'],
+        ]
+    ],
+    [
+        'module' => 'Customer Management',
+        'icon' => 'fas fa-users',
+        'route' => null,
+        'children' => [
+            ['title' => 'Customers', 'route' => 'admin.customers.index'],
+            ['title' => 'Customer Groups', 'route' => 'admin.customers.groups'],
+            ['title' => 'Reviews', 'route' => 'admin.reviews.index'],
+        ]
+    ],
+    [
+        'module' => 'Marketing & Promotions',
+        'icon' => 'fas fa-bullhorn',
+        'route' => null,
+        'children' => [
+            ['title' => 'Coupons', 'route' => 'admin.coupons.index'],
+            ['title' => 'Newsletter Subscribers', 'route' => 'admin.newsletter.index'],
+            ['title' => 'Banners', 'route' => 'admin.banners.index'],
+        ]
+    ],
+    [
+        'module' => 'Reports & Analytics',
+        'icon' => 'fas fa-chart-line',
+        'route' => null,
+        'children' => [
+            ['title' => 'Sales Reports', 'route' => 'admin.reports.sales'],
+            ['title' => 'Product Reports', 'route' => 'admin.reports.products'],
+            ['title' => 'Customer Reports', 'route' => 'admin.reports.customers'],
+        ]
+    ],
+    [
+        'module' => 'Shipping & Logistics',
+        'icon' => 'fas fa-truck',
+        'route' => null,
+        'children' => [
+            ['title' => 'Shipping Methods', 'route' => 'admin.shipping.methods'],
+            ['title' => 'Shipping Zones', 'route' => 'admin.shipping.zones'],
+        ]
+    ],
+    [
+        'module' => 'Payment Settings',
+        'icon' => 'fas fa-credit-card',
+        'route' => null,
+        'children' => [
+            ['title' => 'Payment Gateways', 'route' => 'admin.payments.gateways'],
+            ['title' => 'Transaction Logs', 'route' => 'admin.payments.transactions'],
+        ]
+    ],
+    [
+        'module' => 'User Access Control',
+        'icon' => 'fas fa-user-shield',
+        'route' => null,
+        'children' => [
+            ['title' => 'Admin Users', 'route' => 'admin.users.index'],
+            ['title' => 'Roles & Permissions', 'route' => 'admin.roles.index'],
+        ]
+    ],
+    [
+        'module' => 'System Settings',
+        'icon' => 'fas fa-cogs',
+        'route' => null,
+        'children' => [
+            ['title' => 'Site Settings', 'route' => 'admin.settings.general'],
+            ['title' => 'Tax Settings', 'route' => 'admin.settings.tax'],
+            ['title' => 'SEO Settings', 'route' => 'admin.settings.seo'],
+        ]
+    ],
+    [
+        'module' => 'Logs & Activity',
+        'icon' => 'fas fa-file-alt',
+        'route' => null,
+        'children' => [
+            ['title' => 'System Logs', 'route' => 'admin.logs.system'],
+            ['title' => 'User Activity Logs', 'route' => 'admin.logs.activity'],
+        ]
+    ],
+];
