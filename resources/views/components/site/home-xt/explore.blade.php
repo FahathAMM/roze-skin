@@ -6,7 +6,7 @@
     <div class="container">
         <div class="flat-img-with-text">
             <div class="banner banner-left wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                <img src="{{ asset('site/images/slider/a3.png') }}" alt="banner"
+                <img src="{{ asset('sites/images/slider/a3.png') }}" alt="banner"
                     style="transform: scaleX(-1);width:475px;height:475px">
                 {{-- <img src="{{ asset('site/images/banner/banner-w-text1.jpg') }}" alt="banner"> --}}
             </div>
@@ -20,7 +20,7 @@
                         Collection</span><i class="icon icon-arrowUpRight"></i></a>
             </div>
             <div class="banner banner-right wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
-                <img src="{{ asset('site/images/slider/a1.png') }}" alt="banner">
+                <img src="{{ asset('sites/images/slider/a1.png') }}" alt="banner">
             </div>
         </div>
     </div>

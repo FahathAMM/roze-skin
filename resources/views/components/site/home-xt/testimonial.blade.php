@@ -12,7 +12,7 @@
                     <div class="testimonial-item hover-img">
                         <div class="img-style">
                             <img data-src="images/testimonial/tes-1.jpg"
-                                src="{{ asset('site/images/testimonial/tes-1.jpg') }}" alt="img-testimonial">
+                                src="{{ asset('sites/images/testimonial/tes-1.jpg') }}" alt="img-testimonial">
                             <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
                                 <span class="icon icon-eye"></span>
                                 <span class="tooltip">Quick View</span>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="box-avt">
                                 <div class="avatar avt-60 round">
-                                    <img src="{{ asset('site/images/avatar/user-4.jpg') }}" alt="avt">
+                                    <img src="{{ asset('sites/images/avatar/user-4.jpg') }}" alt="avt">
                                 </div>
                                 <div class="box-price">
                                     <p class="text-title text-line-clamp-1">Contrasting sheepskin sweatshirt</p>
@@ -67,7 +67,7 @@
                     <div class="testimonial-item hover-img">
                         <div class="img-style">
                             <img data-src="images/testimonial/tes-2.jpg"
-                                src="{{ asset('site/images/testimonial/tes-2.jpg') }}" alt="img-testimonial">
+                                src="{{ asset('sites/images/testimonial/tes-2.jpg') }}" alt="img-testimonial">
                             <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
                                 <span class="icon icon-eye"></span>
                                 <span class="tooltip">Quick View</span>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="box-avt">
                                 <div class="avatar avt-60 round">
-                                    <img src="{{ asset('site/images/avatar/user-5.jpg') }}" alt="avt">
+                                    <img src="{{ asset('sites/images/avatar/user-5.jpg') }}" alt="avt">
                                 </div>
                                 <div class="box-price">
                                     <p class="text-title text-line-clamp-1">Contrasting sheepskin sweatshirt</p>
@@ -122,7 +122,7 @@
                     <div class="testimonial-item hover-img">
                         <div class="img-style">
                             <img data-src="images/testimonial/tes-1.jpg"
-                                src="{{ asset('site/images/testimonial/tes-1.jpg') }}" alt="img-testimonial">
+                                src="{{ asset('sites/images/testimonial/tes-1.jpg') }}" alt="img-testimonial">
                             <a href="#quickView" data-bs-toggle="modal" class="box-icon hover-tooltip center">
                                 <span class="icon icon-eye"></span>
                                 <span class="tooltip">Quick View</span>
@@ -163,7 +163,7 @@
                             </div>
                             <div class="box-avt">
                                 <div class="avatar avt-60 round">
-                                    <img src="{{ asset('site/images/avatar/user-4.jpg') }}" alt="avt">
+                                    <img src="{{ asset('sites/images/avatar/user-4.jpg') }}" alt="avt">
                                 </div>
                                 <div class="box-price">
                                     <p class="text-title text-line-clamp-1">Contrasting sheepskin sweatshirt</p>

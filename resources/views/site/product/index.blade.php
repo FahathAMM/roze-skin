@@ -41,8 +41,8 @@
                     <div class="swiper-slide">
                         <div class="collection-position-2 hover-img">
                             <a class="img-style">
-                                <img class="lazyload" data-src="{{ asset('site/images/collections/cls1.jpg') }}"
-                                    src="{{ asset('site/images/collections/cls1.jpg') }}" alt="banner-cls">
+                                <img class="lazyload" data-src="{{ asset('sites/images/collections/cls1.jpg') }}"
+                                    src="{{ asset('sites/images/collections/cls1.jpg') }}" alt="banner-cls">
                             </a>
                             <div class="content">
                                 <a href="shop-collection.html" class="cls-btn">

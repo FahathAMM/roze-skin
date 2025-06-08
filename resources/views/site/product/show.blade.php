@@ -120,8 +120,8 @@
         </div>
         <div class="tf-add-cart-product">
             <div class="image">
-                <img class=" ls-is-cached lazyloaded" data-src="{{ asset('site/images/products/womens/women-3.jpg') }}"
-                    alt="" src="{{ asset('site/images/products/womens/women-3.jpg') }}">
+                <img class=" ls-is-cached lazyloaded" data-src="{{ asset('sites/images/products/womens/women-3.jpg') }}"
+                    alt="" src="{{ asset('sites/images/products/womens/women-3.jpg') }}">
             </div>
             <div class="content">
                 <div class="text-title">
@@ -334,7 +334,7 @@
                                         <div class="text-title">Guaranteed safe checkout:</div>
                                         <div class="tf-payment">
                                             @foreach ($productInfo['payment_images'] as $img)
-                                                <a href="#"><img src="{{ asset('site/images/payment/' . $img) }}"
+                                                <a href="#"><img src="{{ asset('sites/images/payment/' . $img) }}"
                                                         alt=""></a>
                                             @endforeach
                                         </div>
@@ -445,6 +445,7 @@
                 }
 
                 const response = await fetchJsonRequest(endpoint, payload, 'POST');
+                console.log(response);
 
                 if (response.status) {
 

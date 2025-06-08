@@ -22,7 +22,7 @@
             </div>
             <div class="col-xl-3 col-md-4 col-6">
                 <a href="{{ url('/') }}" class="logo-header">
-                    <img src="{{ asset('site/images/logo/1.png') }}" alt="logo" class="logo">
+                    <img src="{{ asset('sites/images/logo/1.png') }}" alt="logo" class="logo">
                 </a>
             </div>
             <div class="col-xl-6 d-none d-xl-block">

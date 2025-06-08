@@ -74,7 +74,7 @@
                 <div class="col-md-6">
                     <div class="about-us-features wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                         <img class=" ls-is-cached lazyloaded" data-src="images/banner/about-us.jpg"
-                            src="{{ asset('site/images/about/shop.jpeg') }}" alt="image-team">
+                            src="{{ asset('sites/images/about/shop.jpeg') }}" alt="image-team">
 
                         {{-- <img class=" ls-is-cached lazyloaded" data-src="images/banner/about-us.jpg"
                             src="https://lh3.googleusercontent.com/p/AF1QipN9ZHjtuTEsZnBhUlRwBsAEdNMa_A6CpDI_hTaY=s1360-w1360-h1020"
@@ -109,7 +109,7 @@
                         </div>
 
 
-                        <a href="{{ asset('site/doc/profile.pdf') }}" target="blank" class="tf-btn btn-fill wow fadeInUp"
+                        <a href="{{ asset('sites/doc/profile.pdf') }}" target="blank" class="tf-btn btn-fill wow fadeInUp"
                             style="visibility: visible; animation-name: fadeInUp;">
                             <span class="text text-button">
                                 View Profile

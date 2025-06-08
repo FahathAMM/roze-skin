@@ -106,7 +106,17 @@
                     </form>
                 </div>
                 <div class="col-xl-4">
-                    <div class="fl-sidebar-cart">
+                    <div class="fl-sidebar-cart" id="cart-summary-area">
+
+
+                        <div id="summary-loader"
+                            style="display: none; position: absolute; top: 0; left: 0;
+         right: 0; bottom: 0; background: rgba(255,255,255,0.8);
+          align-items: center; justify-content: center; z-index: 10;">
+                            {{-- <div>Loading...</div> <!-- or use a spinner GIF here --> --}}
+                            <!-- <img src="/images/spinner.gif" width="40" alt="Loading..."> -->
+                        </div>
+
                         <div class="box-order bg-surface">
                             <h5 class="title">Order Summary</h5>
                             <div class="subtotal text-button d-flex justify-content-between align-items-center">
@@ -167,15 +177,10 @@
                     var cartId = productItem.find(".cart-id").val();
                     var productId = productItem.find(".product-id").val();
 
-                    productItem.find(".color-btn, .size-btn").on("click", function() {
-                        var newPrice = parseFloat($(this).data("price")) || basePrice;
-                        quantityInput.val(1);
-                        productItem.find(".price-on-sale").text("AED " + newPrice.toFixed(2).replace(
-                            /\B(?=(\d{3})+(?!\d))/g, ","));
-                        updateTotalPrice(newPrice, productItem, productId);
-                    });
 
                     productItem.find(".btn-increase").on("click", function() {
+                        $('#summary-loader').show();
+
                         var currentQuantity = parseInt(quantityInput.val());
                         quantityInput.val(currentQuantity + 1);
                         updateTotalPrice(null, productItem, productId);
@@ -184,13 +189,13 @@
                     productItem.find(".btn-decrease").on("click", function() {
                         var currentQuantity = parseInt(quantityInput.val());
                         if (currentQuantity > 1) {
+                            $('#summary-loader').show();
                             quantityInput.val(currentQuantity - 1);
                             updateTotalPrice(null, productItem, productId);
                         }
                     });
 
                     function updateTotalPrice(price, scope, productId = null) {
-
                         var currentPrice =
                             price ||
                             parseFloat(
@@ -206,7 +211,25 @@
                 });
             };
 
+            var deleteFile = function() {
+                $(".remove").on("click", async function(e) {
+                    e.preventDefault();
+                    var confirmed = confirm("Are you sure you want to delete this file?");
+                    if (confirmed) {
+
+                        let productId = $(this).closest(".file-delete").find(".product-id").val();
+                        let isDeleted = await removeCart(productId);
+
+                        if (isDeleted) {
+                            $(this).closest(".file-delete").remove();
+                        }
+                    }
+                });
+            };
+
+
             async function addCart(productId, quantity) {
+
                 if (productId == '') {
                     return;
                 }
@@ -222,10 +245,65 @@
 
                 if (response.status) {
                     alertNotifySite('Updated product', 'success')
+                    refreshContent("{{ url('shopping/card') }}", 'cart-summary-area')
+
+                    setTimeout(() => {
+                        $('#summary-loader').hide();
+                    }, 1000);
+
                 }
             }
 
+            async function removeCart(productId) {
+                if (productId == '') {
+                    return;
+                }
+
+                let endpoint = "{{ url('shopping/cart/remove') }}/" + productId;
+
+                let payload = {
+                    productId: productId,
+                }
+
+                const response = await fetchJsonRequest(endpoint, payload, 'DELETE');
+
+                if (response.status) {
+                    alertNotifySite(response.message, 'success')
+                    refreshContent("{{ url('shopping/card') }}", 'cart-summary-area')
+
+                    return true;
+                } else {
+                    return false
+                }
+            }
+
+            function refreshContent(pageUrl = "", area = "") {
+
+                fetch(pageUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                        return response.text();
+                    })
+                    .then(html => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, 'text/html');
+
+                        const newContent = doc.getElementById(area)?.innerHTML;
+
+                        if (newContent !== undefined) {
+                            document.getElementById(area).innerHTML = newContent;
+                        } else {
+                            console.error(`Element with ID '${area}' not found in response.`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching content:', error);
+                    });
+            }
+
+
             totalPriceVariant();
+            deleteFile();
         </script>
     @endpush
 

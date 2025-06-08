@@ -31,7 +31,7 @@
         <!-- /Banner parallax -->
 
         <section class="flat-banner-parallax-v2"
-            style="background-image: url('{{ asset('site/images/home/banner-cosmetic.jpg') }}');">
+            style="background-image: url('{{ asset('sites/images/home/banner-cosmetic.jpg') }}');">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">

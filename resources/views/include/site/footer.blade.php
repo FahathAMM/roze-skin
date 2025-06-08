@@ -39,7 +39,7 @@
                         <div class="footer-infor">
                             <div class="footer-logo">
                                 <a href="{{ url('/') }}">
-                                    <img src="{{ asset('site/images/logo/3.png') }}" alt="">
+                                    <img src="{{ asset('sites/images/logo/3.png') }}" alt="">
                                 </a>
                             </div>
                             {{-- <div class="footer-address">

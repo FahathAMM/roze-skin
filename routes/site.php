@@ -7,7 +7,7 @@ use App\Http\Controllers\Site\Product\ProductController;
 use App\Http\Controllers\Site\Organization\AboutUsController;
 use App\Http\Controllers\Site\Organization\ContactController;
 use App\Http\Controllers\Site\Organization\DownloadController;
-use App\Http\Controllers\Site\ShoppingCard\ShoppingCardController;
+use App\Http\Controllers\Site\Shopping\ShoppingCardController;
 
 // Route::get('/', function () {
 //     return view('site.test');
@@ -45,6 +45,7 @@ Route::get('/customer/logout', [CustomerLoginController::class, 'logout'])->name
 
 
 Route::post('shopping/cart/add/{product}', [ShoppingCardController::class, 'addToCart'])->name('cart.add');
+Route::delete('shopping/cart/remove/{productId}', [ShoppingCardController::class, 'removeFromCart'])->name('cart.remove');
 
 Route::middleware('customer')->group(function () {
 

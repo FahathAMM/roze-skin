@@ -5,8 +5,8 @@
                 style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
                 <a class="img-style">
                     <img class=" ls-is-cached lazyloaded"
-                        data-src="{{ asset('site/images/collections/grid-cls/gaming-1.jpg') }}"
-                        src="{{ asset('site/images/home/game2.jpeg') }}" alt="banner-cls">
+                        data-src="{{ asset('sites/images/collections/grid-cls/gaming-1.jpg') }}"
+                        src="{{ asset('sites/images/home/game2.jpeg') }}" alt="banner-cls">
                     {{-- src="{{ asset('site/images/home/game2.jpg') }}" alt="banner-cls"> --}}
                 </a>
                 <div class="content text-start ">
@@ -34,8 +34,8 @@
             <div class="collection-default abs-left-bottom type-xl radius-20 hover-img wow fadeInUp" data-wow-delay="0s"
                 style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
                 <a class="img-style">
-                    <img class=" ls-is-cached lazyloaded" data-src="{{ asset('site/images/home/game3.jpg') }}"
-                        src="{{ asset('site/images/home/game6.png') }}" alt="banner-cls">
+                    <img class=" ls-is-cached lazyloaded" data-src="{{ asset('sites/images/home/game3.jpg') }}"
+                        src="{{ asset('sites/images/home/game6.png') }}" alt="banner-cls">
                 </a>
                 <div class="content text-start ">
                     <div class="box-title">
@@ -63,8 +63,8 @@
                 data-wow-delay="0s" style="visibility: visible; animation-delay: 0s; animation-name: fadeInUp;">
                 <a class="img-style">
                     <img class=" ls-is-cached lazyloaded"
-                        data-src="{{ asset('site/images/collections/grid-cls/gaming-3.jpg') }}"
-                        src="{{ asset('site/images/home/game13.png') }}" alt="banner-cls">
+                        data-src="{{ asset('sites/images/collections/grid-cls/gaming-3.jpg') }}"
+                        src="{{ asset('sites/images/home/game13.png') }}" alt="banner-cls">
                 </a>
                 <div class="content text-start ">
                     <div class="box-title">
