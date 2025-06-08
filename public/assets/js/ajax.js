@@ -108,6 +108,7 @@ async function fetchJsonRequest(url = "", payload = {}, method = "GET") {
     }
 }
 
+//
 function ajaxRequest(url = "", payload = {}, method = "GET") {
 
     if (!url) {
