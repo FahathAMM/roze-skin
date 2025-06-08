@@ -1315,7 +1315,7 @@
     $(function () {
         selectImages();
         btnQuantity();
-        deleteFile();
+        // deleteFile();
         goTop();
         variantPicker();
         swatchColor();
