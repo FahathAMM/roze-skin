@@ -40,3 +40,8 @@ public/offline.html
 resources/assets
 
 public/sites
+public/assets
+
+/public/assets/js/**
+
+/public/
