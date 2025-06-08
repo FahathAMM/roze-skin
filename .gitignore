@@ -1,14 +1,16 @@
 /.phpunit.cache
 /node_modules
-# /public/*
-# /public
-/public/build
+
+/public/buildzz
 /public/hot
 /public/storage
 /public/assets/gridphp
 /public/assets/libs
 /public/assets/json
 /public/assets/images
+
+public.zip
+
 /app/Classes
 /storage/*.key
 /vendor
@@ -24,6 +26,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+public/site
 public/assets1
 public/site/contact
 public/site/images
