@@ -27,7 +27,6 @@ class ProductController extends Controller
 
         // return $categoryModel;
 
-
         if (!$categoryModel->parent_id) {
             // If it's a parent category, get products from its subcategories
             // $subCategoryIds = $categoryModel->clone()->where('parent_id', $categoryModel->id)->pluck('id');
@@ -41,7 +40,6 @@ class ProductController extends Controller
                 $query->where('slug', $category);
             })->get();
         }
-
 
         // return [
         //     $subCategoryIds,
@@ -74,8 +72,6 @@ class ProductController extends Controller
     {
         // return $id;
         $product = Product::where('sku', $id)->with('gallery', 'category', 'attributes', 'files', 'videos')->first();
-
-        // return $product;
 
         return view('site.product.show', [
             'product' => $product,
