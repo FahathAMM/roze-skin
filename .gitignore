@@ -42,6 +42,6 @@ resources/assets
 public/sites
 public/assets
 
-/public/assets/js/**
-
 /public/
+
+# git rm -r --cached public  //this removed from git chached files
