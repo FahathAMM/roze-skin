@@ -16,19 +16,33 @@ class OrderItem extends Model
         'product_id',
         'variant_id',
         'quantity',
-        'price'
+        'price',
     ];
 
+    protected $casts = [
+        'quantity' => 'integer',
+        'price' => 'decimal:2',
+    ];
+
+    /**
+     * Relationship: OrderItem belongs to an Order
+     */
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
+    /**
+     * Relationship: OrderItem belongs to a Product
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
+    /**
+     * Relationship: OrderItem optionally belongs to a Product Variant
+     */
     public function variant()
     {
         return $this->belongsTo(ProductVariant::class);
