@@ -7,17 +7,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Customer extends Authenticatable
 {
     protected $fillable = [
-        'password',
+        'first_name',
+        'last_name',
         'name',
-        'mobile',
-        'address',
+        'email',
         'city',
         'postal_code',
+        'mobile',
+        'password',
+        'address',
         'country',
+        'description',
         'is_default',
     ];
 
     protected $hidden = ['password'];
+
+    protected $casts = [
+        'is_default' => 'boolean',
+    ];
 
     public function getAuthIdentifierName()
     {
