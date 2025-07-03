@@ -159,3 +159,29 @@ if (!function_exists('aditionalMenu')) {
         ];
     }
 }
+
+if (!function_exists('getIngredientsForHeader')) {
+    function getIngredientsForHeader()
+    {
+        $ingredients = [
+            ['id' => 'rice', 'name' => 'Rice'],
+            ['id' => 'aloe-vera', 'name' => 'Aloe vera'],
+            ['id' => 'phellodendron-amurense', 'name' => 'Phellodendron Amurense'],
+            ['id' => 'knotweed', 'name' => 'Knotweed'],
+            ['id' => 'rosemary', 'name' => 'Rosemary'],
+            ['id' => 'chamomilla-recutita', 'name' => 'Chamomilla Recutita'],
+            ['id' => 'ginseng', 'name' => 'Ginseng'],
+            ['id' => 'folic-acid', 'name' => 'Folic Acid'],
+            ['id' => 'amino-acids', 'name' => 'Amino Acids'],
+            ['id' => 'retinol', 'name' => 'Retinol'],
+            ['id' => 'vitamin-c', 'name' => 'Vitamin C'],
+            ['id' => 'vitamin-e', 'name' => 'Vitamin E'],
+            ['id' => 'niacinamide', 'name' => 'Niacinamide'],
+            ['id' => 'hyaluric-acid', 'name' => 'Hyaluric Acid'],
+            ['id' => 'salicylic-acid', 'name' => 'Salicylic Acid'],
+            ['id' => 'azelaic-acid', 'name' => 'Azelaic Acid'],
+        ];
+
+        return $ingredients;
+    }
+}
