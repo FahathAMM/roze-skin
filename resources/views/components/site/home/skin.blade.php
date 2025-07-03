@@ -24,7 +24,7 @@
             @foreach ($skins as $skin)
                 <div class="collection-position-2 style-6 hover-img wow fadeInUp" data-wow-delay="0s">
                     <a class="img-style">
-                        @php $imagePath = asset("site/images/skin/{$skin['image']}"); @endphp
+                        @php $imagePath = asset("sites/images/skin/{$skin['image']}"); @endphp
                         <img class="ls-is-cached lazyloaded" data-src="{{ $imagePath }}" src="{{ $imagePath }}"
                             alt="banner-cls">
                     </a>
