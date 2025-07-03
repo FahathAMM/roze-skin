@@ -30,11 +30,6 @@ class ShoppingCardController extends Controller
         $cartItems = $this->repo->getCart();
         $total = $this->repo->getCartTotal();
 
-        // return [
-        //     $cartItems,
-        //     $total
-        // ];
-
         return view('site.shoppingcard.index', compact('cartItems', 'total'));
     }
 
