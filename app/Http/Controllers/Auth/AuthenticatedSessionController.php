@@ -33,10 +33,10 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        if ($this->isMultiDeviceLoginAttempt($user)) {
-            $this->handleMultiDeviceLogin();
-            return $this->redirectToLoginWithError('You have been logged out because your account was accessed from another device.');
-        }
+        // if ($this->isMultiDeviceLoginAttempt($user)) {
+        //     $this->handleMultiDeviceLogin();
+        //     return $this->redirectToLoginWithError('You have been logged out because your account was accessed from another device.');
+        // }
 
         event(new UserLoginEvent(Auth::user()));
 
