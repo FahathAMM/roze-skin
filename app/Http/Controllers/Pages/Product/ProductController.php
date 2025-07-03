@@ -65,8 +65,6 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        // return $this->model->query()->get();
-
         if ($request->ajax()) {
 
             $permissions = [
@@ -107,6 +105,7 @@ class ProductController extends Controller
             'title' =>   $this->modelName,
         ]);
     }
+
 
     public function edit(Product $product)
     {
