@@ -17,6 +17,7 @@ use App\Http\Controllers\Pages\Product\ProductVariantController;
 use App\Http\Controllers\Pages\Administration\WhatsappController;
 use App\Http\Controllers\Pages\Administration\PermissionController;
 use App\Http\Controllers\Pages\Administration\MailTrackingController;
+use App\Http\Controllers\Pages\Order\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,8 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('product-variants', ProductVariantController::class);
 
     Route::resource('contacts', ContactController::class);
+
+    Route::resource('order', OrderController::class);
 
     Route::resource('blogs', BlogController::class);
 

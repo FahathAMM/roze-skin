@@ -153,7 +153,7 @@
                                         I agree with the <a href="term-of-use.html">terms and conditions</a>
                                     </label>
                                 </fieldset>
-                                <a href="checkout.html" class="tf-btn btn-reset">Process To Checkout</a>
+                                <a href="{{ url('shopping/checkout') }}" class="tf-btn btn-reset">Process To Checkout</a>
                                 <p class="text-button text-center">Or continue shopping</p>
                             </div>
                         </div>

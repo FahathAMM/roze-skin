@@ -27,7 +27,8 @@
                         src="images/products/beauty-cosmetic/beauty13.jpg" alt="image-product">
                 </a> --}}
 
-            <a href="{{ url('product', ['id' => $products?->id]) }}" class="product-img">
+
+            <a href="{{ url('product/' . $products->sku) }}" class="product-img">
                 <img class="lazyload img-product" data-src="{{ $products?->mainImage?->image }}"
                     src="{{ $products?->mainImage?->image }}" alt="image-product">
                 <img class="lazyload img-hover" data-src="{{ $products?->mainImage?->image }}"

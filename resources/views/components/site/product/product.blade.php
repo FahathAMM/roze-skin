@@ -132,7 +132,7 @@
             </div>
         </div>
     @endforeach
-    <ul class="wg-pagination justify-content-center">
+    {{-- <ul class="wg-pagination justify-content-center">
         <li><a href="#" class="pagination-item text-button">1</a></li>
         <li class="active">
             <div class="pagination-item text-button">2</div>
@@ -140,7 +140,7 @@
         <li><a href="#" class="pagination-item text-button">3</a></li>
         <li><a href="#" class="pagination-item text-button"><i class="icon-arrRight"></i></a>
         </li>
-    </ul>
+    </ul> --}}
 </div>
 
 @push('scripts')

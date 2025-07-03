@@ -16,7 +16,7 @@
 
                 <div class="swiper-slide">
                     <div class="wrap-slider">
-                        <img src="{{ asset("site/images/slider/$i.jpg") }}" alt="fashion-slideshow">
+                        <img src="{{ asset("sites/images/slider/$i.jpg") }}" alt="fashion-slideshow">
                         <div class="box-content d-none d-sm-none  d-md-block d-lg-block">
                             <div class="container">
                                 <div class="content-slider">
@@ -150,12 +150,15 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const messages = [
-            "Smart threat detection and automated responses",
-            "HD cameras, motion sensors, and facial recognition",
-            "Biometric entry and remote access control",
-            "Seamless security with connected devices",
-            "Instant alerts and remote system access",
+            "rozeskincaredubai@gmail.com ",
+            "(+971) 55 125 6576 ",
+            "rozeskincaredubai@gmail.com ",
+            "(+971) 55 125 6576 ",
         ];
+
+
+
+
 
         const container = document.querySelector(".initial-child-container");
 

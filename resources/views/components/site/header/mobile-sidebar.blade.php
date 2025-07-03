@@ -44,10 +44,10 @@
                                 <div id="dropdown-menu-four" class="collapse" style="">
                                     <ul class="sub-nav-menu">
 
-                                        @foreach (getSolutionForHeader() as $solution)
-                                            <li><a href="{{ url('solution-by-type/' . $solution['id']) }}"
+                                        @foreach (getIngredientsForHeader() as $ind)
+                                            <li><a href="{{ url('solution-by-type/' . $ind['id']) }}"
                                                     class="sub-nav-link">
-                                                    {{ $solution['name'] }}
+                                                    {{ $ind['name'] }}
                                                 </a>
                                             </li>
                                         @endforeach
