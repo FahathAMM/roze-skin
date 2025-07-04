@@ -1,6 +1,37 @@
 @extends('layout.app')
 @section('title', $title)
 @section('content')
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    {{-- "customer_id": 1,
+"order_number": "ORD-20250616-00001",
+"total_price": "716.00",
+"status": "pending",
+"address": "",
+"item_count": 2,
+"payment_status": false,
+"created_at": "2025-06-16 10:44:22",
+"updated_at": "2025-06-16T06:44:22.000000Z",
+"payment_method": "cod", --}}
+
+    @php
+        $details = [
+            ['icon' => 'ri-user-line', 'label' => 'Firstname', 'value' => $order->customer->first_name],
+            ['icon' => 'ri-user-line', 'label' => 'Lastname', 'value' => $order->customer->last_name],
+            ['icon' => 'ri-mail-line', 'label' => 'Email', 'value' => $order->customer->email],
+            ['icon' => 'ri-phone-line', 'label' => 'Telephone', 'value' => $order->customer->mobile],
+            ['icon' => 'ri-earth-line', 'label' => 'Country id', 'value' => $order->customer->country],
+            ['icon' => 'ri-building-line', 'label' => 'City', 'value' => $order->customer->city],
+            // ['icon' => 'ri-map-pin-line', 'label' => 'Postcode', 'value' => '---'],
+            // ['icon' => 'ri-home-smile-line', 'label' => 'Address type', 'value' => 'billing'],
+            // ['icon' => 'ri-building-4-line', 'label' => 'Company', 'value' => '---'],
+            // ['icon' => 'ri-store-line', 'label' => 'Store name', 'value' => '---'],
+            ['icon' => 'ri-road-map-line', 'label' => 'Payment Method', 'value' => $order->payment_method],
+            // ['icon' => 'ri-road-map-line', 'label' => 'Street', 'value' => $order->total_price],
+            ['icon' => 'ri-road-map-line', 'label' => 'Address', 'value' => $order->customer->address],
+            // ['icon' => 'ri-road-map-line', 'label' => 'Street', 'value' => $order->status],
+        ];
+    @endphp
 
     <div class="page-content">
         <div class="container-fluid">
@@ -22,159 +53,8 @@
             <!-- end page title -->
 
             <div class="row">
-                <div class="col-xl-9">
-
-                    {{-- <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex align-items-center">
-                                <h5 class="card-title flex-grow-1 mb-0">Order #VL2667</h5>
-                                <div class="flex-shrink-0">
-                                    <a href="apps-invoices-details.html" class="btn btn-success btn-sm"><i
-                                            class="ri-download-2-fill align-middle me-1"></i> Invoice</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive table-card">
-                                <table class="table table-nowrap align-middle table-borderless mb-0">
-                                    <thead class="table-light text-muted">
-                                        <tr>
-                                            <th scope="col">Product Details</th>
-                                            <th scope="col">Item Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Rating</th>
-                                            <th scope="col" class="text-end">Total Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 avatar-md bg-light rounded p-1">
-                                                        <img src="assets/images/products/img-8.png" alt=""
-                                                            class="img-fluid d-block">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="fs-15"><a href="apps-ecommerce-product-details.html"
-                                                                class="link-primary">Sweatshirt for Men (Pink)</a></h5>
-                                                        <p class="text-muted mb-0">Color: <span
-                                                                class="fw-medium">Pink</span></p>
-                                                        <p class="text-muted mb-0">Size: <span class="fw-medium">M</span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>$119.99</td>
-                                            <td>02</td>
-                                            <td>
-                                                <div class="text-warning fs-15">
-                                                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                                        class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                                        class="ri-star-half-fill"></i>
-                                                </div>
-                                            </td>
-                                            <td class="fw-medium text-end">
-                                                $239.98
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 avatar-md bg-light rounded p-1">
-                                                        <img src="assets/images/products/img-7.png" alt=""
-                                                            class="img-fluid d-block">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="fs-15"><a href="apps-ecommerce-product-details.html"
-                                                                class="link-primary">Noise NoiseFit Endure Smart Watch</a>
-                                                        </h5>
-                                                        <p class="text-muted mb-0">Color: <span
-                                                                class="fw-medium">Black</span></p>
-                                                        <p class="text-muted mb-0">Size: <span
-                                                                class="fw-medium">32.5mm</span></p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>$94.99</td>
-                                            <td>01</td>
-                                            <td>
-                                                <div class="text-warning fs-15">
-                                                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                                        class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                                        class="ri-star-half-fill"></i>
-                                                </div>
-                                            </td>
-                                            <td class="fw-medium text-end">
-                                                $94.99
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 avatar-md bg-light rounded p-1">
-                                                        <img src="assets/images/products/img-3.png" alt=""
-                                                            class="img-fluid d-block">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h5 class="fs-15"><a href="apps-ecommerce-product-details.html"
-                                                                class="link-primary">350 ml Glass Grocery Container</a></h5>
-                                                        <p class="text-muted mb-0">Color: <span
-                                                                class="fw-medium">White</span></p>
-                                                        <p class="text-muted mb-0">Size: <span class="fw-medium">350
-                                                                ml</span></p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>$24.99</td>
-                                            <td>01</td>
-                                            <td>
-                                                <div class="text-warning fs-15">
-                                                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
-                                                        class="ri-star-half-fill"></i><i class="ri-star-line"></i><i
-                                                        class="ri-star-line"></i>
-                                                </div>
-                                            </td>
-                                            <td class="fw-medium text-end">
-                                                $24.99
-                                            </td>
-                                        </tr>
-                                        <tr class="border-top border-top-dashed">
-                                            <td colspan="3"></td>
-                                            <td colspan="2" class="fw-medium p-0">
-                                                <table class="table table-borderless mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Sub Total :</td>
-                                                            <td class="text-end">$359.96</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Discount <span class="text-muted">(VELZON15)</span> : :</td>
-                                                            <td class="text-end">-$53.99</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Shipping Charge :</td>
-                                                            <td class="text-end">$65.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Estimated Tax :</td>
-                                                            <td class="text-end">$44.99</td>
-                                                        </tr>
-                                                        <tr class="border-top border-top-dashed">
-                                                            <th scope="row">Total (USD) :</th>
-                                                            <th class="text-end">$415.96</th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div> --}}
-
-
-                    <div class="card">
+                <div class="col-xl-8">
+                    <div class="card mb-1">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h5 class="card-title flex-grow-1 mb-0">Order #{{ $order->order_number }}</h5>
@@ -184,6 +64,43 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="card mb-1">
+
+                        <div class="card-header align-items-center d-flex border-bottom-dashed">
+                            <h4 class="card-title mb-0 flex-grow-1">Customer</h4>
+                        </div>
+
+                        <div class="card-body pb-0">
+                            <div class="row" style="font-family: system-ui;">
+                                @foreach ($details as $index => $item)
+                                    <div class="col-12 {{ $loop->last && count($details) % 2 !== 0 ? 'col-md-6 col-sm-12 col-xl-6' : 'col-md-4 col-sm-6 col-xl-3' }} py-0"
+                                        style="border-bottom: 1px solid #e5e5e5">
+                                        <div class="card-body py-1">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <span class="bg-primary-subtles rounded-1 p-2 my-4"
+                                                        style="font-size:25px">
+                                                        <i class="{{ $item['icon'] }} text-primary"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="ms-2 flex-grow-1">
+                                                    <p class="mb-1 fs-12 fw-medium">{{ $item['label'] }}</p>
+                                                    <p class="text-muted1 fw-bold mb-0 fs-12 text-responsive"
+                                                        style="color:#dc291e">
+                                                        {{ $item['value'] }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <table class="table table-nowrap align-middle table-borderless mb-0">
@@ -257,17 +174,84 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="card mb-1">
+                        <div class="card-header">
+                            <div class="d-flex">
+                                <h5 class="card-title flex-grow-1 mb-0"><i
+                                        class="mdi mdi-truck-fast-outline align-middle me-1 text-muted"></i> Logistics
+                                    Details</h5>
+                                <div class="flex-shrink-0">
+                                    <a href="javascript:void(0);" class="badge bg-primary-subtle text-primary fs-11">Track
+                                        Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <lord-icon src="https://cdn.lordicon.com/uetqnvvg.json" trigger="loop"
+                                    colors="primary:#405189,secondary:#0ab39c" style="width:80px;height:80px"></lord-icon>
+                                <h5 class="fs-16 mt-0">
+                                    <span class="badge bg-success p-2">
+                                        {{ ucfirst($order->status) }}
+                                    </span>
+                                </h5>
+
+                                {{-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Change Order Status As
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            @foreach (\App\Enums\OrderStatus::cases() as $status)
+                                                <li>
+                                                    <a class="dropdown-item" href="334">
+                                                        {{ ucwords(str_replace('_', ' ', $status->value)) }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div> --}}
+
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Change Order Status As
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            @foreach (\App\Enums\OrderStatus::cases() as $status)
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('order.changeStatus', ['order' => $order->id, 'status' => $status->value]) }}">
+                                                        {{ ucwords($status->value) }}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                {{-- <p class="text-muted mb-0">ID: MFDS1400457854</p>
+                                <p class="text-muted mb-0">Payment Mode : Debit Card</p> --}}
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card">
                         <div class="card-header">
                             <div class="d-sm-flex align-items-center">
                                 <h5 class="card-title flex-grow-1 mb-0">Order Status</h5>
-                                <div class="flex-shrink-0 mt-2 mt-sm-0">
+                                {{-- <div class="flex-shrink-0 mt-2 mt-sm-0">
                                     <a href="javascript:void(0);" class="btn btn-soft-info btn-sm mt-2 mt-sm-0"><i
                                             class="ri-map-pin-line align-middle me-1"></i> Change Address</a>
                                     <a href="javascript:void(0);" class="btn btn-soft-danger btn-sm mt-2 mt-sm-0"><i
                                             class="mdi mdi-archive-remove-outline align-middle me-1"></i> Cancel Order</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="card-body">
@@ -301,217 +285,22 @@
                                             <div id="log-{{ $log->id }}" class="accordion-collapse collapse show"
                                                 aria-labelledby="headingOne" data-bs-parent="#accordionExample"
                                                 style="">
-                                                <div class="accordion-body ms-2 ps-5 pt-0">
+                                                <div class="accordion-body ms-2 ps-5 pt-0 pb-0">
                                                     <h6 class="mb-1">An order has been placed.</h6>
-                                                    <p class="text-muted">Wed, 15 Dec 2021 - 05:34PM</p>
+                                                    <p class="text-muted mb-0">Wed, 15 Dec 2021 - 05:34PM</p>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
-
-
-                                    <div class="accordion-item border-0">
-                                        <div class="accordion-header" id="headingOne">
-                                            <a class="accordion-button p-2 shadow-none collapsed" data-bs-toggle="collapse"
-                                                href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 avatar-xs">
-                                                        <div class="avatar-title bg-success rounded-circle">
-                                                            <i class="ri-shopping-bag-line"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h6 class="fs-15 mb-0 fw-semibold">Order Placed - <span
-                                                                class="fw-normal">Wed, 15 Dec 2021</span></h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div id="collapseOne" class="accordion-collapse collapse"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample"
-                                            style="">
-                                            <div class="accordion-body ms-2 ps-5 pt-0">
-                                                <h6 class="mb-1">An order has been placed.</h6>
-                                                <p class="text-muted">Wed, 15 Dec 2021 - 05:34PM</p>
-
-                                                <h6 class="mb-1">Seller has processed your order.</h6>
-                                                <p class="text-muted mb-0">Thu, 16 Dec 2021 - 5:48AM</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    {{-- <div class="accordion-item border-0">
-                                        <div class="accordion-header" id="headingTwo">
-                                            <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse"
-                                                href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 avatar-xs">
-                                                        <div class="avatar-title bg-success rounded-circle">
-                                                            <i class="mdi mdi-gift-outline"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h6 class="fs-15 mb-1 fw-semibold">Packed - <span
-                                                                class="fw-normal">Thu, 16 Dec 2021</span></h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample"
-                                            style="">
-                                            <div class="accordion-body ms-2 ps-5 pt-0">
-                                                <h6 class="mb-1">Your Item has been picked up by courier partner</h6>
-                                                <p class="text-muted mb-0">Fri, 17 Dec 2021 - 9:45AM</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item border-0">
-                                        <div class="accordion-header" id="headingThree">
-                                            <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse"
-                                                href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 avatar-xs">
-                                                        <div class="avatar-title bg-success rounded-circle">
-                                                            <i class="ri-truck-line"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h6 class="fs-15 mb-1 fw-semibold">Shipping - <span
-                                                                class="fw-normal">Thu, 16 Dec 2021</span></h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div id="collapseThree" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample"
-                                            style="">
-                                            <div class="accordion-body ms-2 ps-5 pt-0">
-                                                <h6 class="fs-14">RQK Logistics - MFDS1400457854</h6>
-                                                <h6 class="mb-1">Your item has been shipped.</h6>
-                                                <p class="text-muted mb-0">Sat, 18 Dec 2021 - 4.54PM</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item border-0">
-                                        <div class="accordion-header" id="headingFour">
-                                            <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse"
-                                                href="#collapseFour" aria-expanded="false">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 avatar-xs">
-                                                        <div class="avatar-title bg-light text-success rounded-circle">
-                                                            <i class="ri-takeaway-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h6 class="fs-14 mb-0 fw-semibold">Out For Delivery</h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item border-0">
-                                        <div class="accordion-header" id="headingFive">
-                                            <a class="accordion-button p-2 shadow-none" data-bs-toggle="collapse"
-                                                href="#collapseFile" aria-expanded="false">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 avatar-xs">
-                                                        <div class="avatar-title bg-light text-success rounded-circle">
-                                                            <i class="mdi mdi-package-variant"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h6 class="fs-14 mb-0 fw-semibold">Delivered</h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div> --}}
-
-
                                 </div>
                                 <!--end accordion-->
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="col-xl-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="d-flex">
-                                <h5 class="card-title flex-grow-1 mb-0">Customer Details</h5>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled mb-0 vstack gap-3">
-                                <li>
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1 ms-3">
-                                            <h6 class="fs-14 mb-1">{{ $order->customer->first_name }}
-                                                {{ $order->customer->last_name }}</h6>
-                                            <p class="text-muted mb-0">Customer</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><i
-                                        class="ri-mail-line me-2 align-middle text-muted fs-16"></i>{{ $order->customer->email }}
-                                </li>
-                                <li><i
-                                        class="ri-phone-line me-2 align-middle text-muted fs-16"></i>{{ $order->customer->mobile }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Billing Address</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled vstack gap-2 fs-13 mb-0">
-                                <li class="fw-medium fs-14">{{ $order->customer->name }}</li>
-                                <li>{{ $order->customer->mobile }}</li>
-                                <li>{{ $order->customer->address }}</li>
-                                <li>{{ $order->customer->city }}</li>
-                                <li>{{ $order->customer->country }}</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Payment Details</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="flex-grow-1 ms-2">
-                                    <h6 class="mb-0">#{{ $order->id }}</h6>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="flex-grow-1 ms-2">
-                                    <h6 class="mb-0">{{ strtoupper($order->payment_method) }}</h6>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="flex-grow-1 ms-2">
-                                    <h6 class="mb-0">{{ $order->customer->first_name }}
-                                        {{ $order->customer->last_name }}</h6>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="flex-grow-1 ms-2">
-                                    <h6 class="mb-0">${{ number_format($order->total_price, 2) }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+
+
         </div>
 
     </div>
