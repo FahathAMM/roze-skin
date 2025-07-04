@@ -17,6 +17,8 @@ class CheckoutController extends Controller
     protected $repo;
     protected $cartService;
     protected $cartRepo;
+    protected $modelName = 'Cart';
+    protected $routeName = 'cart.index';
 
     public function __construct(CheckoutRepo $repo, CartRepo $cartRepo)
     {
@@ -58,7 +60,8 @@ class CheckoutController extends Controller
             //         'status' => 'processing'
             //     ]);
             // }
-            return $order;
+            return  $this->response($this->modelName . ' created successfully', ['data' => $order], true);
+
             // return redirect()->route('checkout.success', $order->order_number)->with('success', 'Order placed successfully!');
         } catch (\Exception $e) {
 
