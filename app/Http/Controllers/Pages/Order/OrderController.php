@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Pages\Order;
 
+use App\Enums\OrderStatus;
 use App\Models\Order\Order;
 use Illuminate\Http\Request;
+use App\Models\Order\OrderLog;
 use Yajra\DataTables\DataTables;
 use App\Models\Category\Category;
 use App\Http\Controllers\Controller;
@@ -52,6 +54,24 @@ class OrderController extends Controller
         return view('pages/order/index', [
             'title' =>   'Order',
         ]);
+    }
+
+    public function changeStatus($orderId, $status)
+    {
+        if (!in_array($status, OrderStatus::values())) {
+            abort(400, 'Invalid status');
+        }
+
+        $updated = $this->model->find($orderId)->update(['status' => $status]);
+
+        if ($updated) {
+            OrderLog::updateOrCreate(
+                ['order_id' => $orderId, 'status' => $status],
+                ['order_id' => $orderId, 'status' => $status, 'status_date' => now()]
+            );
+        }
+
+        return redirect()->back()->with('success', "Order #$orderId status has been successfully updated.");
     }
 
     public function create()
