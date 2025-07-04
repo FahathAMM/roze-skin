@@ -67,6 +67,9 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     Route::resource('contacts', ContactController::class);
 
     Route::resource('order', OrderController::class);
+    // Route::get('/order/change-status', [OrderController::class, 'changeStatus'])->name('order.changeStatus');
+
+    Route::get('/order/{order}/change-status/{status}', [OrderController::class, 'changeStatus'])->name('order.changeStatus');
 
     Route::resource('blogs', BlogController::class);
 
