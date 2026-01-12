@@ -59,8 +59,9 @@
                             <div class="d-flex align-items-center">
                                 <h5 class="card-title flex-grow-1 mb-0">Order #{{ $order->order_number }}</h5>
                                 <div class="flex-shrink-0">
-                                    <a href="#" class="btn btn-success btn-sm"><i
-                                            class="ri-download-2-fill align-middle me-1"></i> Invoice</a>
+                                    <a href="{{ url('admin/order/invoice/' . $order->id) }}"
+                                        class="btn btn-success btn-sm"><i
+                                            class="ri-download-2-fill align-middle me-1"></i>Invoice</a>
                                 </div>
                             </div>
                         </div>
