@@ -74,9 +74,10 @@ class OrderController extends Controller
         return redirect()->back()->with('success', "Order #$orderId status has been successfully updated.");
     }
 
-    public function create()
+    public function invoice(Order $order)
     {
-        //
+        $order = $order->load('customer', 'OrderLog', 'items');
+        return $order;
     }
 
     public function store(Request $request)
