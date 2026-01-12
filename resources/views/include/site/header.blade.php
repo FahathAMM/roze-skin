@@ -103,14 +103,15 @@
                         @if (Auth::guard('customer')->check())
                             <div class="dropdown-account">
                                 <ul class="list-menu-item">
-                                    <li><a href="{{ url('customer/account', ['page' => 'customer-detail']) }}"
+                                    <li>
+                                        <a href="{{ url('customer/account', ['page' => 'customer-detail']) }}"
                                             class="body-text-1 link">My Account</a>
                                     </li>
-                                    <li><a href="order-tracking.html" class="body-text-1 link">Order Tracking</a>
+                                    {{-- <li><a href="order-tracking.html" class="body-text-1 link">Order Tracking</a>
                                     </li>
                                     <li><a href="my-account-orders.html" class="body-text-1 link">My Order</a></li>
                                     <li><a href="my-account-address.html" class="body-text-1 link">My Address</a>
-                                    </li>
+                                    </li> --}}
                                     <li><a href="{{ route('customer.logout') }}" class="body-text-1 link">Logout</a>
                                     </li>
                                 </ul>
