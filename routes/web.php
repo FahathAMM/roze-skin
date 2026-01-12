@@ -70,6 +70,7 @@ Route::prefix('admin')->middleware(['auth', 'logged.session'])->group(function (
     // Route::get('/order/change-status', [OrderController::class, 'changeStatus'])->name('order.changeStatus');
 
     Route::get('/order/{order}/change-status/{status}', [OrderController::class, 'changeStatus'])->name('order.changeStatus');
+    Route::get('/order/invoice/{order}', [OrderController::class, 'invoice'])->name('order.invoice');
 
     Route::resource('blogs', BlogController::class);
 
